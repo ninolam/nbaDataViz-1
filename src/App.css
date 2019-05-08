@@ -1,33 +1,61 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Players-container {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #840211;
+}
+
+.PlayerB{
+  background: white;
+  width: 51.5%;
+  -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+clip-path: polygon(50px 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.PlayerA{
+  background: #840211;
+  width: 48.5%;
+}
+
+.content-box {
+  position: absolute;
+  height: 100%;
+  max-width: 90%;
+  min-width: 10%;
+}
+
+.header {
+  width: 100%;
+  height: 30px;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.resizer {
+  position: absolute;
+  z-index: 9999;
+  height: 50px;
+  width: 50px;
+  top: 50%;
+  right: -50px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #840211;
+  transform: translateY(-50%);
+}
+.resizer:hover {
+  cursor: ew-resize;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.left {
+  left: 0;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right {
+  right: 0;
 }
