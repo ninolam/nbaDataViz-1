@@ -1,14 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body, html{
-  font-family: 'Montserrat', sans-serif;
-  max-height: 100%;
-  overflow: hidden;
-}
-
 select option {
   margin-left: 40px;
 }
@@ -106,13 +95,6 @@ padding-left: 10px;
   cursor: ew-resize;
 }
 
-.left {
-  left: 0;
-}
-
-.right {
-  right: 0;
-}
 input::-webkit-input-placeholder, input { /* Edge */
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
@@ -127,10 +109,4 @@ input::placeholder, input {
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
 }
-option, select, input{
-  outline: none;
-  border: none
-}
-
-.mt-10{margin-top: 10px;}.mt-20{margin-top: 20px;}.mt-30{margin-top: 30px;}.mb-10{margin-bottom: 10px;}.mb-20{margin-bottom: 20px;}.mb-30{margin-bottom: 30px;}
 

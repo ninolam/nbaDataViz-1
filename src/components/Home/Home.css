@@ -1,0 +1,37 @@
+.Home-container{
+  background: #1F1D1D url('../../assets/imgs/Ballon.png') bottom right;
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: 30%;
+}
+
+.Home-description{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10%;
+  display: inline-block;
+  color: #ffffff;
+}
+
+p{
+  font-weight: 100;
+}
+.Home-choice{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.Home-choice-compare{
+  color: #DD6E1E;
+}
+
+a{
+  text-decoration: none;
+  border: 1px solid white;
+  width: 47%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 0;
+}
