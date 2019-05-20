@@ -84,8 +84,12 @@ class ProfileSearch extends Component {
         <ul className="list-group">
           {
             this.state.items.map((item, i) => {
-              return <li className="list-group-item" onClick={() => this.setState({ updateItem: this.state.initialItems[i], ProfileResult:true })
-               } data-category={item} key={item}>{item} </li>
+              return <li className="list-group-item" onClick={(event) => {
+                const Players = this.state.initialItems.filter(player => player.name == event.currentTarget.dataset.category);
+                this.setState({ updateItem: Players[0], ProfileResult:true })
+                  }
+                }
+               data-category={item} key={item}>{item} </li>
             })
           }
         </ul>

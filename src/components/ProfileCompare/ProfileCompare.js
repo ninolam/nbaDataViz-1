@@ -47,23 +47,31 @@ class ProfileCompare extends Component {
         if (box1.style.width >= "70%" && box1.style.width <= "71%") {
           box1.style.width = leftHeight + 25 + '%';
           PlayerContainerB.style.visibility = "hidden"
-          contentA.classList.remove("Stats-container-hidden");
+          if(PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container'){
+            contentA.classList.remove("Stats-container-hidden");
+          }
         }
         else if (box1.style.width >= "84%" && box1.style.width <= "85%") {
           box1.style.width = '50%';
           PlayerContainerB.style.visibility = "visible"
-          contentA.classList.add("Stats-container-hidden");
+          if(PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container'){
+            contentA.classList.add("Stats-container-hidden");
+          }
         }
 
         else if (box1.style.width >= "30%" && box1.style.width <= "31%") {
           box1.style.width = leftHeight - 30 + '%';
           PlayerContainerA.style.visibility = "hidden"
-          contentB.classList.remove("Stats-container-hidden");
+          if(PlayerContainerB.children[2].className.split(" ")[0] === 'Stats-container'){
+            contentB.classList.remove("Stats-container-hidden");
+          }
         }
         else if (box1.style.width >= "14%" && box1.style.width <= "15%") {
           box1.style.width = '50%';
           PlayerContainerA.style.visibility = "visible"
-          contentB.classList.add("Stats-container-hidden");
+          if(PlayerContainerB.children[2].className.split(" ")[0] === 'Stats-container'){
+            contentB.classList.add("Stats-container-hidden");
+          }
         }
       }
     };
