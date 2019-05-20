@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import ProfileCompare from '../ProfileCompare/ProfileCompare'
+// import ProfileCompare from '../ProfileCompare/ProfileCompare'
 import Home from '../Home/Home'
 
 
-const App  = () => { 
+const App = () => {
     return <Home />;
 }
 
