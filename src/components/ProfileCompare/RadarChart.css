@@ -1,0 +1,28 @@
+
+.radar-chart, .radar-chart-category, section{
+    background-color: #F2EFE5;
+  }
+  
+  .radar-chart-category{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 30%;
+    margin: 20px auto;
+  }
+  
+  
+  .radar-chart-category button{
+    font-family: 'Montserrat', sans-serif!important;
+    padding: 10px 40px;
+    border: 1px solid black;
+    outline: none;
+    text-transform: uppercase;
+    transition: 0.5s ease-out;
+  }
+  
+  .radar-chart-category .active{
+    color:#ffffff;
+    background-color: #000000;
+  }
+  

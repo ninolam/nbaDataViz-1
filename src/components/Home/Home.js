@@ -3,7 +3,6 @@ import './Home.css';
 import ProfileCompare from '../ProfileCompare/ProfileCompare'
 
 class Home extends Component {
-
   state = {
     home: true
   }
@@ -13,7 +12,6 @@ class Home extends Component {
   render() {
     if (this.state.home === true) {
       return (
-
         <div className="Home-container">
           <div className="Home-description">
             <h1 className="mb-10"><b>NBA ANALYSE</b></h1>
@@ -28,7 +26,7 @@ class Home extends Component {
       );
     } else {
       return (
-        <ProfileCompare />
+        <ProfileCompare ref={(ourComponent) => {window.ourComponent = ourComponent}} />
       )
     }
 
