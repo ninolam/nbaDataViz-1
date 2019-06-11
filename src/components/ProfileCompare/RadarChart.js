@@ -25,6 +25,17 @@ export default class RadarChart extends Component {
     this.handleAtt = this.handleAtt.bind(this);
   }
 
+  componentDidUpdate(){
+    var parentA = document.querySelector('.PlayerA');
+    var parentB = document.querySelector('.PlayerB');
+    var radar = document.querySelector('.radar-chart');
+    if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
+      radar.style.display = "block";
+    } else {
+      radar.style.display = "none"
+    }
+  }
+  
   componentDidMount(){
     window.addEventListener('click', this.handleClick);
   }
@@ -81,17 +92,21 @@ export default class RadarChart extends Component {
       
     }
   }
+
+
+
   
   
 
-  render() {    
+  render() {  
+      
     return (
       <div className="radar-chart">
         <div className="radar-chart-category">
           <button onClick={this.handleAtt} className="radar-chart-category-att active">Attaque</button>
           <button onClick={this.handleDef} className="radar-chart-category-def">Defense</button>
         </div>
-        <Radar  data={this.state.data} />
+        <Radar options={{ tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
       </div>
     );
   }

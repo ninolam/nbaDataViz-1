@@ -3,23 +3,35 @@ import './ProfileCompare.css';
 import resize from '../../assets/imgs/resize.png';
 import ProfileSearchB from './ProfileSearchB'
 import ProfileSearchA from './ProfileSearchA'
-import RadarChart from './RadarChart'
+// import RadarChart from './RadarChart'
 
-class ProfileCompare extends Component {
-
+class ProfileCompare extends Component  {
+  
   constructor(props) {
     super(props)
     this.state = { 
       ProfileResult: false,
-      updateItemA: window.ProfileSearchA,
+      updateItemA: [],
+      updateItemB: [],
      }
   }
+  
   
   changeView() {
     this.setState({ ProfileResult: true });
   }
 
-  render() {
+  // componentDidMount(){
+  //   window.addEventListener('mouseover', () => {
+  //     this.setState({
+  //       updateItemA : window.ProfileSearchA.state.updateItemA,
+  //       updateItemB : window.ProfileSearchA.state.updateItemB
+  //     })   
+  //   })
+  // }
+
+  render() {    
+    
     function changevalue(e) {
       e.preventDefault();
 
@@ -46,10 +58,12 @@ class ProfileCompare extends Component {
         var secondItemB = document.querySelector('.PlayerB .Stats-item-container:nth-child(2)')
         var thirdItemB = document.querySelector('.PlayerB .Stats-item-container:last-child')
         var thirdItemBisB = document.querySelector('.PlayerB .Stats-item-container-plus .Stats-item-container')
-
+        
         var secondItemA = document.querySelector('.PlayerA .Stats-item-container:nth-child(2)')
+        var thirddItemA = document.querySelector('.PlayerA .Stats-item-container:nth-child(3)')
         var thirdItemA = document.querySelector('.PlayerA .Stats-item-container:last-child')
         var thirdItemBisA = document.querySelector('.PlayerA .Stats-item-container-plus .Stats-item-container')
+        // var ok = document.querySelector('.ok')
 
         box1.style.width = leftHeight + '%';
         box2.style.width = 100 - leftHeight + '%';
@@ -62,6 +76,8 @@ class ProfileCompare extends Component {
             PlayerContainerPlusA.style.display = "flex";
             PlayerContainerPlusitemA.appendChild(thirdItemA);
             [...document.querySelectorAll('.PlayerA svg')].map(x => x.classList.add('large'))
+            document.querySelector('.Players-container .PlayerA .container').classList.add('container-flex')
+            thirddItemA.style.display = "block"
             secondItemA.style.display = "block"
           }
         }
@@ -73,7 +89,9 @@ class ProfileCompare extends Component {
             PlayerContainerPlusA.style.display = "none"
             contentA.appendChild(thirdItemBisA);
             [...document.querySelectorAll('.PlayerA svg')].map(x => x.classList.remove('large'))
+            document.querySelector('.Players-container .PlayerA .container').classList.remove('container-flex')
             secondItemA.style.display = "none"
+            thirddItemA.style.display = "none"
 
           }
         }
@@ -86,6 +104,7 @@ class ProfileCompare extends Component {
             PlayerContainerPlusB.style.display = "flex";
             PlayerContainerPlusitemB.appendChild(thirdItemB);
             [...document.querySelectorAll('.PlayerB svg')].map(x => x.classList.add('large'))
+            document.querySelector('.Players-container .PlayerB .container').classList.add('container-flex', 'container-flex-reverse')
             secondItemB.style.display = "block"
           }
         }
@@ -97,32 +116,30 @@ class ProfileCompare extends Component {
             PlayerContainerPlusB.style.display = "none";
             contentB.appendChild(thirdItemBisB);
             [...document.querySelectorAll('.PlayerB svg')].map(x => x.classList.remove('large'))
+            document.querySelector('.Players-container .PlayerB .container').classList.remove('container-flex', 'container-flex-reverse')
             secondItemB.style.display = "none"
             }
         }
       }
     };
-
-
-
     return ( 
       <section>
+        
       <div className="Players-container">
-        <div className="content-box PlayerA left">
+        <div  className="content-box PlayerA left">
+        <div class="layer"></div>
           <ProfileSearchA ref={(ProfileSearchA) => {window.ProfileSearchA = ProfileSearchA}} id={"A"} />
           <div onMouseDown={changevalue} className="resizer"><span className="helper"></span><img alt="resize" src={resize} /> </div>
         </div>
-
 
         <div className="content-box PlayerB right">
           <ProfileSearchB ref={(ProfileSearchB) => {window.ProfileSearchB = ProfileSearchB}} id={"B"} />
         </div>
       </div>
-      <RadarChart updateItemA={this.state.updateItemA} />
+      {/* <RadarChart updateItemA={this.state.updateItemA} /> */}
     </section>
     );
   }
 }
-
 
 export default ProfileCompare;

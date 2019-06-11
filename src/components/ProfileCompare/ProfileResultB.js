@@ -3,7 +3,7 @@ import './ProfileCompare.css';
 import '../App/App.css'
 import DonutChart from "react-svg-donut"
 
-class ProfileResult extends Component {
+class ProfileResultB extends Component {
   constructor() {
     super()
     this.state = {
@@ -26,7 +26,7 @@ class ProfileResult extends Component {
   }
 
   componentDidMount() {
-    var searchBar = document.querySelector('.PlayerB .wow .Search-all-container');
+    var searchBar = document.querySelector('.PlayerB .container .Search-all-container');
     searchBar.classList.add("fixed", "right");
     this.clearValue();
     var inputValue = document.querySelector('.PlayerB .Search-all-container input');
@@ -63,7 +63,7 @@ class ProfileResult extends Component {
 
     if (PlayerInfos !== undefined) {
       return (
-        <div className="wow">
+        <div className="container">
           {this.props.renderSearch}
           <section className="all-content">
             <div className="Player-container Player-info-container">
@@ -157,4 +157,4 @@ class ProfileResult extends Component {
   }
 }
 
-export default ProfileResult;
+export default ProfileResultB;

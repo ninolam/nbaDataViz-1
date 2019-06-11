@@ -2,47 +2,72 @@ import React, { Component } from 'react';
 import './ProfileCompare.css';
 import '../App/App.css'
 import DonutChart from "react-svg-donut"
+import api from '../helpers/api'
 
-class ProfileResult extends Component {
-  constructor() {
-    super()
+
+class ProfileResultA extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
       moreStats: false,
+      PlayerInfosMore : []
     }
   }
 
   clearValue() {
+    var PlayerInfosMore = this.props.updateItemMoreA;
+
+    var totalrb = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound;
+    var totalPaniers = PlayerInfosMore.two_points + PlayerInfosMore.three_points;
     var donutTitleA = document.querySelector('.PlayerA .donut-chart:first-child .donut-chart-text-value')
     var donutSubTitleA = document.querySelector('.PlayerA .donut-chart:first-child .donut-chart-text-subtext')
 
-    donutTitleA.textContent = this.props.updateItemA.totalPaniers;
+    donutTitleA.textContent = totalPaniers;
     donutSubTitleA.textContent = "Paniers";
 
     var donutTitleB = document.querySelector('.PlayerA .donut-chart:last-child .donut-chart-text-value')
     var donutSubTitleB = document.querySelector('.PlayerA .donut-chart:last-child .donut-chart-text-subtext')
 
-    donutTitleB.textContent = this.props.updateItemA.rT
+    donutTitleB.textContent = totalrb
     donutSubTitleB.textContent = "Rebond";
   }
 
-  componentDidMount() {
-    var searchBar = document.querySelector('.PlayerA .wow .Search-all-container');
-    searchBar.classList.add("fixed", "left");
+  async componentDidMount() {
+    var searchBar = document.querySelector('.PlayerA .container .Search-all-container');
+    searchBar.classList.add("fixed");
     this.clearValue();
     var inputValue = document.querySelector('.PlayerA .Search-all-container input');
     inputValue.value = this.props.updateItemA.name;
-    document.querySelector('.PlayerA ul').style.visibility = "hidden";
+    console.log(this.props);
+    //this.props.toto;
+    // var dataName = data.map(item => (item.name))
+
+    // var PlayerInfos = this.props.updateItemA;
+    // var PlayerInfosMorezz = this.props.updateItemMoreA;
+
+    // const data = await api.getCategoriesStats(PlayerInfos.id_player_stat);   
+    // console.log(data);
+    // this.setState({
+    //   PlayerInfosMore : PlayerInfosMorezz
+    // })
+
   }
   componentDidUpdate() {
     this.clearValue()
   }
   render() {
+    // var PlayerInfos = this.props.updateItemA;
+    // console.log(PlayerInfos);
+    // const { PlayerInfosMore } = this.state;
 
     var PlayerInfos = this.props.updateItemA;
-    var roPrc = PlayerInfos.rO / PlayerInfos.rT * 100;
-    var rdPrc = PlayerInfos.rD / PlayerInfos.rT * 100;
-    var threePointPrc = PlayerInfos.threePoint / PlayerInfos.totalPaniers * 100;
-    var twoPointPrc = PlayerInfos.twoPoint / PlayerInfos.totalPaniers * 100;
+    var PlayerInfosMore = this.props.updateItemMoreA;
+
+    var totalrb = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound
+    var roPrc = PlayerInfosMore.offensive_rebound / totalrb * 100;
+    var rdPrc = PlayerInfosMore.defensive_rebound / totalrb * 100;
+    var threePointPrc = PlayerInfosMore.three_points * 3 / PlayerInfosMore.points * 100;
+    var twoPointPrc = PlayerInfosMore.two_points * 2 / PlayerInfosMore.points * 100;
 
     const styles = {
       display: 'flex',
@@ -63,48 +88,78 @@ class ProfileResult extends Component {
 
     if (PlayerInfos !== undefined) {
       return (
-        <div className="wow">
+        
+        <div className="container">
           {this.props.renderSearch}
-          <section className="all-content">
+          <section style = {{  backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat", backgroundSize: "70%"}} className="all-content">
+            <div className="layer"></div>
             <div className="Player-container Player-info-container">
-
-              <img className="img-player" alt="player" src={'https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=' + PlayerInfos.firstname.toLowerCase() + '-' + PlayerInfos.lastname.toLowerCase()} />
+              <img className="img-player" alt="player" src={'https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=' + PlayerInfos.name.replace(' ', '-')} />
               <div className="Player-info">
                 <div>
-                  <p className="poste">Poste: <b>{PlayerInfos.poste}</b></p>
-                  <p className="equipe">Equipe: <b>{PlayerInfos.equipe}</b></p>
-                  <p className="age">Age: <b>{PlayerInfos.age} ans</b></p>
+                  <p className="poste">Poste: <b>{PlayerInfosMore.post}</b></p>
+                  <p className="equipe">Equipe: <b>{PlayerInfosMore.name}</b></p>
+                  <p className="age">Année de naissance: <b>{PlayerInfosMore.birth_year}</b></p>
                 </div>
                 <div>
-                  <p className="poids">Poids: <b>{PlayerInfos.poids}</b></p>
-                  <p className="taille">Taille: <b>{PlayerInfos.taille}</b></p>
-                  <p className="experience">Experience: <b>{PlayerInfos.experience} ans</b></p>
+                  <p className="poids">Poids: <b>{PlayerInfosMore.weight}</b></p>
+                  <p className="taille">Taille: <b>{PlayerInfosMore.height}</b></p>
+                  <p className="experience">Université: <b>{PlayerInfosMore.college}</b></p>
                 </div>
-
-              </div>
+                </div>
               <div className="Stats-container Stats-container-hidden">
                 <div className="Stats-item-container">
-                  <div className="Stats-item" id="minute"></div>
-                  <div className="Stats-item" id="points"></div>
+                  <div className="Stats-item" id="minute">
+                    <p>{PlayerInfosMore.minute_played} Minute jouée</p>
+                    <span>{PlayerInfosMore.rankMinutePlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+
+                  </div>
+                  <div className="Stats-item" id="points">
+                  <p>{PlayerInfosMore.points} Points marquées</p>
+                    <span>{PlayerInfosMore.rankPoint} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  </div>
                 </div>
 
                 <div className="Stats-item-container">
-                  <div className="Stats-item" id="passes"></div>
-                  <div className="Stats-item" id="rebond"></div>
+                  <div className="Stats-item" id="passes">
+                  <p>{PlayerInfosMore.assist} Passes décisives</p>
+                    <span>{PlayerInfosMore.rankAssit} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  </div>
+                  <div className="Stats-item" id="matchJouer">
+                  <p>{PlayerInfosMore.match_played} Matchs Joués</p>
+                    <span>{PlayerInfosMore.rankMatchPlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  </div>
+                  
                 </div>
+
+                <div className="Stats-item-container">
+                  <div className="Stats-item" id="rebondO">
+                  <p>{PlayerInfosMore.offensive_rebound} Rebond Offensive</p>
+                    <span>{PlayerInfosMore.rankOffensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  </div>
+                  <div className="Stats-item" id="rebondD">
+                  <p>{PlayerInfosMore.defensive_rebound} Rebond Defensive</p>
+                    <span>{PlayerInfosMore.rankDefensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  </div>
+                  
+                </div>
+
+                
 
                 <div style={styles} className="Stats-item-container">
                   <DonutChart
                     size={200}
                     data={data}
-                    onHover={(i) => {
+                    onHover={(i, item) => {
                       var donutTitle = document.querySelector('.PlayerA .donut-chart:first-child .donut-chart-text-value')
                       var donutSubTitle = document.querySelector('.PlayerA .donut-chart:first-child .donut-chart-text-subtext')
                       if (i >= 0) {
                         donutTitle.textContent = data[i].value + "%"
                         donutSubTitle.textContent = data[i].name
+                        console.log(item);
+                        
                       } else {
-                        donutTitle.textContent = PlayerInfos.totalPaniers
+                        donutTitle.textContent = PlayerInfosMore.two_points + PlayerInfosMore.three_points
                         donutSubTitle.textContent = title
                       }
 
@@ -125,7 +180,7 @@ class ProfileResult extends Component {
                         donutSubTitle.textContent = dataR[i].name
                       }
                       else {
-                        donutTitle.textContent = PlayerInfos.rT
+                        donutTitle.textContent = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound
                         donutSubTitle.textContent = titleR
                       }
                     }}
@@ -143,12 +198,10 @@ class ProfileResult extends Component {
           <div className="Player-container-plus-hide">
 
             <div className="Stats-container-plus">
-              <div className="Stats-item-container-plus">
-              </div>
+              <div className="Stats-item-container-plus"></div>
             </div>
 
           </div>
-
         </div>
 
       );
@@ -157,4 +210,4 @@ class ProfileResult extends Component {
   }
 }
 
-export default ProfileResult;
+export default ProfileResultA;

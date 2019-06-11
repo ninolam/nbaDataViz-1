@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ProfileResultB from './ProfileResultB'
 import './ProfileCompare.css';
 
-
 class ProfileSearchB extends Component {
 
   constructor() {
@@ -15,7 +14,7 @@ class ProfileSearchB extends Component {
           lastname: "James",
           poste: 'Arriere',
           poids: '113kg',
-          equipe: 'Los Angeles Lakers',
+          equipe: 'LAL',
           taille: '2.03m',
           experience: 14,
           age: 34,
@@ -40,7 +39,7 @@ class ProfileSearchB extends Component {
           lastname: "Wade",
           poste: 'Meneur',
           poids: '98kg',
-          equipe: 'Miami Heat',
+          equipe: 'MIA',
           taille: '1.98m',
           experience: 15,
           age: 36,
@@ -53,10 +52,10 @@ class ProfileSearchB extends Component {
           stat7: 12,
           stat8: 56,
           rO: 50,
-          rD: 75,
+          rD: 220,
           rT: 270,
           twoPoint: 30,
-          threePoint: 26,
+          threePoint: 60,
           totalPaniers: 90
         },
       ],
@@ -72,10 +71,12 @@ class ProfileSearchB extends Component {
   componentWillMount() {
     this.setState({ items: this.state.initialItems.map(item => (item.name)) })
   }
-  componentDidMount() {
+  componentDidMount(){
     document.querySelector('.PlayerB ul').style.visibility = "hidden"
   }
+
   filterList(event) {
+
     if (event.target.value !== "") {
       var updatedList = this.state.initialItems.map(item => (item.name))
       updatedList = updatedList.filter(function (item) {
@@ -83,6 +84,8 @@ class ProfileSearchB extends Component {
           event.target.value.toLowerCase()) !== -1;
       });
       this.setState({ items: updatedList });
+      console.log(this.state.items);
+
       console.log(this.state.value);
       document.querySelector('.PlayerB ul').style.visibility = "visible"
     }
@@ -102,10 +105,10 @@ class ProfileSearchB extends Component {
     if (this.state.ProfileResult === false) {
       return (
         <div className="Player-container">
-          <h2 className="Player-title">
+          <h2 className="Player-title mb-10">
             Joueur B
           </h2>
-          <p className="description">Choississez le joueur ou l’équipe que vous souhaitez comparez, si vous souhaitez seulement analyser un joueur glissez le rond vers la droite.</p>
+          <p className="description mb-10">Choississez le joueur ou l’équipe que vous souhaitez comparez, si vous souhaitez seulement analyser un joueur glissez le rond vers la droite.</p>
           {this.renderSearch()}
         </div>
       );
