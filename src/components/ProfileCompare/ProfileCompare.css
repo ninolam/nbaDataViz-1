@@ -103,7 +103,7 @@ select option {
 }
 
 .Search-container input{
-  padding-left: 10px;
+  padding-left: 15px;
   width: 75%;
   height: 42px;
   -webkit-clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
@@ -156,20 +156,17 @@ clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
 }
 input::-webkit-input-placeholder, input { /* Edge */
   font-size: 14px;
-    padding-left: 10px;
-    font-weight: 200;
+  font-weight: 200;
   font-family: 'Montserrat', sans-serif;
 }
 input:-ms-input-placeholder, input { /* Internet Explorer 10-11 */
   font-size: 14px;
-    padding-left: 10px;
-    font-weight: 200;
+  font-weight: 200;
   font-family: 'Montserrat', sans-serif;
 }
 input::placeholder, input {
   font-size: 14px;
-    padding-left: 10px;
-    font-weight: 200;
+  font-weight: 200;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -217,8 +214,7 @@ input::placeholder, input {
   display: flex;
   background-color: white;
   align-items: center;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 7px 0;
   border-bottom: 0.3px solid #E2E8F0;
   transition: 0.5s ease;
   cursor: pointer;
@@ -234,7 +230,6 @@ input::placeholder, input {
   max-width: 40px;
   max-height: 40px;
   border-radius: 50%;
-  border: 1px solid black;
   margin-right: 15px;
   margin-left: 5px;
 }
