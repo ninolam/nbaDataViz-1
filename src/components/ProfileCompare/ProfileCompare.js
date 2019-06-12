@@ -22,8 +22,6 @@ class ProfileCompare extends Component  {
   }
   
   render() {
-
-  render() {    
     
     function changevalue(e) {
       e.preventDefault();
