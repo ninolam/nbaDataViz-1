@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.PlayerB .layer {
+  background-color: #e2813aba;
+}
+
 ul{
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +28,7 @@ ul{
   max-width: 70%;
   margin: 0 auto;
   max-height: 125px;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 li{
@@ -243,8 +247,9 @@ li{
   overflow-x: hidden;
   white-space: nowrap;
   justify-content: center;
-  width: 490px;
+  max-width: 720px;
   align-items: center;
+  margin-left: 30px;
 }
 .Stats-item-container{
   display: inline-block;
