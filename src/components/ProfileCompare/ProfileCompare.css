@@ -61,7 +61,7 @@ select option {
   max-width: 95%;
   min-width: 5%;
 }
- .PlayerA .container, .PlayerB .container, input, select{
+ .PlayerA .container, .PlayerB .container, input .container, select .container{
   color: #ffffff!important;
   fill: #ffffff;
 }
@@ -122,8 +122,12 @@ clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url('../../assets/imgs/arrow-white.png') 92% / 12px no-repeat #ffffff;
+  background: url('../../assets/imgs/arrow.png') 92% / 12px no-repeat #ffffff;
   font-family: 'Montserrat', sans-serif;
+}
+
+.container .Search-container select{
+  background: url('../../assets/imgs/arrow-white.png') 92% / 12px no-repeat #ffffff;
 }
 
 .resizer {
@@ -169,16 +173,16 @@ input::placeholder, input {
   font-family: 'Montserrat', sans-serif;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.container ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: white;
 }
-::-moz-placeholder { /* Firefox 19+ */
+.container ::-moz-placeholder { /* Firefox 19+ */
   color: white;
 }
-:-ms-input-placeholder { /* IE 10+ */
+.container :-ms-input-placeholder { /* IE 10+ */
   color: white;
 }
-:-moz-placeholder { /* Firefox 18- */
+.container :-moz-placeholder { /* Firefox 18- */
   color: white;
 }
 
