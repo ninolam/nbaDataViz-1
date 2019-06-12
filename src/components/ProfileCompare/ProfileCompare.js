@@ -21,15 +21,6 @@ class ProfileCompare extends Component  {
     this.setState({ ProfileResult: true });
   }
 
-  // componentDidMount(){
-  //   window.addEventListener('mouseover', () => {
-  //     this.setState({
-  //       updateItemA : window.ProfileSearchA.state.updateItemA,
-  //       updateItemB : window.ProfileSearchA.state.updateItemB
-  //     })   
-  //   })
-  // }
-
   render() {    
     
     function changevalue(e) {

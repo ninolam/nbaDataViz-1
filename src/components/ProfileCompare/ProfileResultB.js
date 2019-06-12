@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './ProfileCompare.css';
 import '../App/App.css'
 import DonutChart from "react-svg-donut"
-import api from '../helpers/api'
 
 
 class ProfileResultA extends Component {
@@ -81,15 +80,15 @@ class ProfileResultA extends Component {
             <div className="Player-container Player-info-container">
               <img className="img-player" alt="player" src={'https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=' + PlayerInfos.name.replace(' ', '-')} />
               <div className="Player-info">
-                <div>
+              <div>
                   <p className="poste">Poste: <b>{PlayerInfosMore.post}</b></p>
                   <p className="equipe">Equipe: <b>{PlayerInfosMore.name}</b></p>
-                  <p className="age">Année de naissance: <b>{PlayerInfosMore.birth_year}</b></p>
+                  <p className="age">Age: <b>{ 2019 - PlayerInfosMore.birth_year} ans</b></p>
                 </div>
                 <div>
-                  <p className="poids">Poids: <b>{PlayerInfosMore.weight}</b></p>
-                  <p className="taille">Taille: <b>{PlayerInfosMore.height}</b></p>
-                  <p className="experience">Université: <b>{PlayerInfosMore.college}</b></p>
+                  <p className="poids">Poids: <b>{PlayerInfosMore.weight} kg</b></p>
+                  <p className="taille">Taille: <b>{PlayerInfosMore.height / 100} m</b></p>
+                  <p className="universite">Université: <b>{PlayerInfosMore.college === "N/A" ? "Aucune" : PlayerInfosMore.college }</b></p>
                 </div>
                 </div>
               <div className="Stats-container Stats-container-hidden">
