@@ -16,7 +16,7 @@ class ProfileSearchB extends Component {
       opacity: 1,
       items: [],
       error: false,
-      inputValue: ""
+      writing : false
     }
     this.filterList = this.filterList.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
@@ -40,13 +40,12 @@ class ProfileSearchB extends Component {
         if (data.status === "Not Found") {
           this.setState({ error: true });
         } else {
-          //let tmpProfileResult = true;
-          this.setState({ items: data, error: false, profileResult: false});
+          this.setState({ items: data, error: false, profileResult: false, writing: true});
         }
     }
-    //this.setState({
-      //    inputValue: event.target.value
-        // })
+    else {
+      this.setState({ writing: false});
+    }
   }
   onChangeupdateItemB(newItem) {
     this.setState({ 
@@ -66,7 +65,7 @@ class ProfileSearchB extends Component {
       return (
         <div className="Player-container">
           <h2 className="Player-title mb-10">
-            Joueur A
+            Joueur B
           </h2>
           <p className="description mb-10">Choississez le joueur ou l’équipe que vous souhaitez comparez, si vous souhaitez seulement analyser un joueur glissez le rond vers la droite.</p>
           {this.renderSearch()}
@@ -75,7 +74,7 @@ class ProfileSearchB extends Component {
     }
     else {
       return (
-        <ProfileResultB toto={() => this.toto()} renderSearch={this.renderSearch()} updateItemMoreB={this.state.updateItemMoreB} updateItemB={this.state.updateItemB} onChangeupdateItemB={this.onChangeupdateItemB.bind(this)} />
+        <ProfileResultB renderSearch={this.renderSearch()} updateItemMoreB={this.state.updateItemMoreB} updateItemB={this.state.updateItemB} onChangeupdateItemB={this.onChangeupdateItemB.bind(this)} />
       );
     }
   }
@@ -97,7 +96,7 @@ class ProfileSearchB extends Component {
             <option value="2010-11">2010-2011</option>
           </select>
         </div>
-        <ul className={this.state.profileResult ? "hidden" : "list-group"}>
+        <ul className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
           
           {
             this.state.items.map((item, i) => {
@@ -107,8 +106,8 @@ class ProfileSearchB extends Component {
                                 onMouseOver={(e) => { var list = document.querySelectorAll('.PlayerB ul li'); list[i].textContent = item.name; list[i].style.opacity = 0.5 }}
                                 onMouseOut={() => { var list = document.querySelectorAll('.PlayerB ul li'); list[i].textContent = ""; list[i].style.opacity = 1 }}
                                 onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
-                                  var dataMore = await api.getCategoriesStats(item.id_player_stat);    
-                                  this.setState({updateItemMoreB: dataMore, updateItemB: Players[0], ProfileResult: true }); var inputValue = document.querySelector('.PlayerB .Search-all-container input'); inputValue.value = Players[0].name }}
+                                var dataMore = await api.getCategoriesStats(item.id_player_stat);    
+                                this.setState({updateItemMoreB: dataMore, updateItemB: Players[0], ProfileResult: true, writing: false }); var inputValue = document.querySelector('.PlayerB .Search-all-container input'); inputValue.value = Players[0].name }}
                                 data-category={item.name}></li>);
                   }  
               

@@ -22,6 +22,8 @@ ul{
   flex-wrap: wrap;
   width: 100%;
   margin-top: 10px;
+  max-height: 265px;
+  overflow: scroll;
 }
 
 .container ul{
@@ -29,6 +31,7 @@ ul{
   margin: 0 auto;
   max-height: 125px;
   overflow: hidden;
+  position: relative;
 }
 
 li{
@@ -38,6 +41,7 @@ li{
   margin-right: 10px;
   line-height: 125px;
   background-color: white;
+  position: relative;
 }
 
 
@@ -174,7 +178,6 @@ padding-left: 10px;
 input::-webkit-input-placeholder, input { /* Edge */
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
 }
 input:-ms-input-placeholder, input { /* Internet Explorer 10-11 */
   font-size: 20px;
@@ -183,7 +186,6 @@ input:-ms-input-placeholder, input { /* Internet Explorer 10-11 */
 input::placeholder, input {
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
 }
 
 .PlayerA .container ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -275,8 +277,16 @@ li{
 .PlayerA .Stats-item, .PlayerA .Stats-item-plus, .PlayerB .Search-all-container.fixed select, .PlayerB .Search-all-container.fixed input, .PlayerB .Search-all-container.fixed .Search-container{
   background-color: var(--color-player-b);
 }
-.PlayerB .Stats-item, .PlayerB .Stats-item-plus, .PlayerA .Search-all-container.fixed select, .PlayerA .Search-all-container.fixed input, .PlayerA .Search-all-container.fixed .Search-container{
+.PlayerB .Stats-item, .PlayerB .Stats-item-plus{
   background-color: var(--color-player-a);
+}
+
+.PlayerA .Search-all-container.fixed select, .PlayerA .Search-all-container.fixed input, .PlayerA .Search-all-container.fixed .Search-container{
+  background-color: #3E435C;
+}
+
+.PlayerB .Search-all-container.fixed select, .PlayerB .Search-all-container.fixed input, .PlayerB .Search-all-container.fixed .Search-container{
+  background-color: #FA8D3E;
 }
 
 .PlayerA .Stats-item-plus{

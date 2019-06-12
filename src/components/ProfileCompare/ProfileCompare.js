@@ -3,7 +3,7 @@ import './ProfileCompare.css';
 import resize from '../../assets/imgs/resize.png';
 import ProfileSearchB from './ProfileSearchB'
 import ProfileSearchA from './ProfileSearchA'
-// import RadarChart from './RadarChart'
+import RadarChart from './RadarChart'
 
 class ProfileCompare extends Component  {
   
@@ -11,8 +11,8 @@ class ProfileCompare extends Component  {
     super(props)
     this.state = { 
       ProfileResult: false,
-      updateItemA: [],
-      updateItemB: [],
+      updateItemMoreA: [],
+      updateItemMoreB: [],
      }
   }
   
@@ -127,7 +127,6 @@ class ProfileCompare extends Component  {
         
       <div className="Players-container">
         <div  className="content-box PlayerA left">
-        <div class="layer"></div>
           <ProfileSearchA ref={(ProfileSearchA) => {window.ProfileSearchA = ProfileSearchA}} id={"A"} />
           <div onMouseDown={changevalue} className="resizer"><span className="helper"></span><img alt="resize" src={resize} /> </div>
         </div>
@@ -136,7 +135,7 @@ class ProfileCompare extends Component  {
           <ProfileSearchB ref={(ProfileSearchB) => {window.ProfileSearchB = ProfileSearchB}} id={"B"} />
         </div>
       </div>
-      {/* <RadarChart updateItemA={this.state.updateItemA} /> */}
+      <RadarChart  updateItemA={this.state.updateItemA} updateItemB={this.state.updateItemB} />
     </section>
     );
   }

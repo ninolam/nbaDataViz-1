@@ -16,7 +16,7 @@ class ProfileSearchA extends Component {
       opacity: 1,
       items: [],
       error: false,
-      inputValue: ""
+      writing : false
     }
     this.filterList = this.filterList.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
@@ -40,13 +40,13 @@ class ProfileSearchA extends Component {
         if (data.status === "Not Found") {
           this.setState({ error: true });
         } else {
-          //let tmpProfileResult = true;
-          this.setState({ items: data, error: false, profileResult: false});
+          this.setState({ items: data, error: false, writing: true});
         }
     }
-    //this.setState({
-      //    inputValue: event.target.value
-        // })
+    else {
+      this.setState({ writing: false});
+    }
+
   }
   onChangeupdateItemA(newItem) {
     this.setState({ 
@@ -75,7 +75,7 @@ class ProfileSearchA extends Component {
     }
     else {
       return (
-        <ProfileResultA toto={() => this.toto()} renderSearch={this.renderSearch()} updateItemMoreA={this.state.updateItemMoreA} updateItemA={this.state.updateItemA} onChangeupdateItemA={this.onChangeupdateItemA.bind(this)} />
+        <ProfileResultA ref={(ProfileResultA) => {window.ProfileResultA = ProfileResultA}} renderSearch={this.renderSearch()} updateItemMoreA={this.state.updateItemMoreA} updateItemA={this.state.updateItemA} onChangeupdateItemA={this.onChangeupdateItemA.bind(this)} />
       );
     }
   }
@@ -97,19 +97,20 @@ class ProfileSearchA extends Component {
             <option value="2010-11">2010-2011</option>
           </select>
         </div>
-        <ul className={this.state.profileResult ? "hidden" : "list-group"}>
+        <ul className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
           
           {
             this.state.items.map((item, i) => {
                   if (this.state.error === false) {
                     return (<li className="list-group-item mb-10" 
-                                style={{ backgroundImage: "url(" + "https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-') + ")" }}
-                                onMouseOver={(e) => { var list = document.querySelectorAll('.PlayerA ul li'); list[i].textContent = item.name; list[i].style.opacity = 0.5 }}
-                                onMouseOut={() => { var list = document.querySelectorAll('.PlayerA ul li'); list[i].textContent = ""; list[i].style.opacity = 1 }}
-                                onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
-                                  var dataMore = await api.getCategoriesStats(item.id_player_stat);    
-                                  this.setState({updateItemMoreA: dataMore, updateItemA: Players[0], ProfileResult: true }); var inputValue = document.querySelector('.PlayerA .Search-all-container input'); inputValue.value = Players[0].name }}
-                                data-category={item.name}></li>);
+                          style={{ backgroundImage: "url(" + "https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-') + ")" }}
+                          onMouseOver={(e) => { var list = document.querySelectorAll('.PlayerA ul li'); list[i].textContent = item.name; list[i].style.opacity = 0.5 }}
+                          onMouseOut={() => { var list = document.querySelectorAll('.PlayerA ul li'); list[i].textContent = ""; list[i].style.opacity = 1 }}
+                          onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
+                          var dataMore = await api.getCategoriesStats(item.id_player_stat);    
+                          this.setState({updateItemMoreA: dataMore, updateItemA: Players[0], ProfileResult: true, writing: false });
+                          var inputValue = document.querySelector('.PlayerA .Search-all-container input'); inputValue.value = Players[0].name }}
+                          data-category={item.name}></li>);
                   }  
               
             })} 

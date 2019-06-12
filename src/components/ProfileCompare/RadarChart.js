@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Radar} from 'react-chartjs-2';
 import './RadarChart.css';
 import './ProfileSearchA'
+import './ProfileSearchB'
+
 
 
 export default class RadarChart extends Component {
@@ -23,35 +25,48 @@ export default class RadarChart extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleDef = this.handleDef.bind(this);
     this.handleAtt = this.handleAtt.bind(this);
+    
+
   }
 
   componentDidUpdate(){
-    var parentA = document.querySelector('.PlayerA');
-    var parentB = document.querySelector('.PlayerB');
-    var radar = document.querySelector('.radar-chart');
-    if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
-      radar.style.display = "block";
-    } else {
-      radar.style.display = "none"
-    }
+    // var parentA = document.querySelector('.PlayerA');
+    // var parentB = document.querySelector('.PlayerB');
+    // var radar = document.querySelector('.radar-chart');
+    // console.log(parentA.childNodes[0].className, parentB.childNodes[0].className);
+    
+    // if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
+    //   radar.style.display = "block";
+    // } 
+    // else {
+    //   radar.style.display = "none"
+    // }
+    // window.addEventListener('click', this.handleClick);
+    // window.addEventListener('mouseover', this.handleClick);    
+
   }
-  
   componentDidMount(){
     window.addEventListener('click', this.handleClick);
   }
 
-  handleClick(){
-    let newState = Object.assign({}, this.state);
-    var playerA = window.ProfileSearchA.state.updateItemA
-    var playerB = window.ProfileSearchB.state.updateItemB
-    newState.data.datasets[0].label = playerA.name;
-    newState.data.datasets[1].label = playerB.name;
-    if ( this.state.data.labels[0] === '% de lancers francs')
-     {
-      newState.data.datasets[0].data = [playerA.stat1, playerA.stat2, playerA.stat3, playerA.stat4];
-      newState.data.datasets[1].data = [playerB.stat1, playerB.stat2, playerB.stat3, playerB.stat4];    
-    }
-    this.setState({newState});    
+
+  handleClick(e){    
+    e.stopPropagation()
+
+    setTimeout(() => {
+      let newState = Object.assign({}, this.state);
+      var playerA = window.ProfileSearchA.state.updateItemMoreA
+      var playerB = window.ProfileSearchB.state.updateItemMoreB
+      newState.data.datasets[0].label = playerA.player_name;
+      newState.data.datasets[1].label = playerB.player_name;
+      if ( this.state.data.labels[0] === '% de lancers francs')
+       {
+        newState.data.datasets[0].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
+        newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];    
+      }
+      this.setState({newState});
+    }, 100);
+    
   }
 
   handleAtt(e){
@@ -60,12 +75,11 @@ export default class RadarChart extends Component {
     var playerA = window.ProfileSearchA.state.updateItemA
     var playerB = window.ProfileSearchB.state.updateItemB
     newState.data.labels = [ '% de lancers francs', '% de reussite', '% de 2 points', '% de 3 points'];
-    newState.data.datasets[0].data = [playerA.stat1, playerA.stat2, playerA.stat3, playerA.stat4];
-    newState.data.datasets[1].data = [playerB.stat1, playerB.stat2, playerB.stat3, playerB.stat4];  
+    newState.data.datasets[0].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
+    newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];    
     this.setState(newState);
     var buttonA = document.querySelector('.radar-chart-category-att')
     var buttonD = document.querySelector('.radar-chart-category-def')
-    console.log(buttonA.className);
 
     if (buttonA.className.split(" ")[1] !== "active") {
       buttonA.classList.toggle('active')
@@ -80,8 +94,8 @@ export default class RadarChart extends Component {
     var playerA = window.ProfileSearchA.state.updateItemA
     var playerB = window.ProfileSearchB.state.updateItemB
     newState.data.labels = [ '% d\'interceptions', '% de blocks', '% de rebond defensif', '% de fautes'];
-    newState.data.datasets[0].data = [playerA.stat5, playerA.stat6, playerA.stat7, playerA.stat7];
-    newState.data.datasets[1].data = [playerB.stat5, playerB.stat6, playerB.stat7, playerB.stat7];
+    newState.data.datasets[0].data = [playerA.three_points_percent, playerA.two_point_percent, playerA.free_throw_attempts, playerA.field_goal_pourcent];
+    newState.data.datasets[1].data = [playerB.three_points_percent, playerB.two_point_percent, playerB.free_throw_attempts, playerB.field_goal_pourcent];    
     this.setState(newState);
     var buttonA = document.querySelector('.radar-chart-category-att')
     var buttonD = document.querySelector('.radar-chart-category-def')
@@ -92,13 +106,7 @@ export default class RadarChart extends Component {
       
     }
   }
-
-
-
-  
-  
-
-  render() {  
+  render() {      
       
     return (
       <div className="radar-chart">

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './ProfileCompare.css';
 import '../App/App.css'
 import DonutChart from "react-svg-donut"
-import api from '../helpers/api'
-
 
 class ProfileResultA extends Component {
   constructor(props) {
@@ -39,35 +37,23 @@ class ProfileResultA extends Component {
     var inputValue = document.querySelector('.PlayerA .Search-all-container input');
     inputValue.value = this.props.updateItemA.name;
     console.log(this.props);
-    //this.props.toto;
-    // var dataName = data.map(item => (item.name))
-
-    // var PlayerInfos = this.props.updateItemA;
-    // var PlayerInfosMorezz = this.props.updateItemMoreA;
-
-    // const data = await api.getCategoriesStats(PlayerInfos.id_player_stat);   
-    // console.log(data);
-    // this.setState({
-    //   PlayerInfosMore : PlayerInfosMorezz
-    // })
 
   }
   componentDidUpdate() {
     this.clearValue()
   }
   render() {
-    // var PlayerInfos = this.props.updateItemA;
-    // console.log(PlayerInfos);
-    // const { PlayerInfosMore } = this.state;
-
     var PlayerInfos = this.props.updateItemA;
     var PlayerInfosMore = this.props.updateItemMoreA;
+    console.log(PlayerInfosMore);
+    
+    
 
     var totalrb = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound
     var roPrc = PlayerInfosMore.offensive_rebound / totalrb * 100;
     var rdPrc = PlayerInfosMore.defensive_rebound / totalrb * 100;
-    var threePointPrc = PlayerInfosMore.three_points * 3 / PlayerInfosMore.points * 100;
-    var twoPointPrc = PlayerInfosMore.two_points * 2 / PlayerInfosMore.points * 100;
+    var threePointPrc = PlayerInfosMore.three_points * 3 / (PlayerInfosMore.points - PlayerInfosMore.free_throw) * 100;
+    var twoPointPrc = PlayerInfosMore.two_points * 2 / (PlayerInfosMore.points - PlayerInfosMore.free_throw) * 100;
 
     const styles = {
       display: 'flex',
@@ -104,7 +90,7 @@ class ProfileResultA extends Component {
                 <div>
                   <p className="poids">Poids: <b>{PlayerInfosMore.weight}</b></p>
                   <p className="taille">Taille: <b>{PlayerInfosMore.height}</b></p>
-                  <p className="experience">Université: <b>{PlayerInfosMore.college}</b></p>
+                  <p className="experience">Experience: <b>{PlayerInfosMore.college}</b></p>
                 </div>
                 </div>
               <div className="Stats-container Stats-container-hidden">

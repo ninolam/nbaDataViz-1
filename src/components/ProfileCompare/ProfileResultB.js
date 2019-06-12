@@ -39,35 +39,20 @@ class ProfileResultA extends Component {
     var inputValue = document.querySelector('.PlayerB .Search-all-container input');
     inputValue.value = this.props.updateItemB.name;
     console.log(this.props);
-    //this.props.toto;
-    // var dataName = data.map(item => (item.name))
-
-    // var PlayerInfos = this.props.updateItemB;
-    // var PlayerInfosMorezz = this.props.updateItemMoreB;
-
-    // const data = await api.getCategoriesStats(PlayerInfos.id_player_stat);   
-    // console.log(data);
-    // this.setState({
-    //   PlayerInfosMore : PlayerInfosMorezz
-    // })
 
   }
   componentDidUpdate() {
     this.clearValue()
   }
   render() {
-    // var PlayerInfos = this.props.updateItemB;
-    // console.log(PlayerInfos);
-    // const { PlayerInfosMore } = this.state;
-
     var PlayerInfos = this.props.updateItemB;
     var PlayerInfosMore = this.props.updateItemMoreB;
 
     var totalrb = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound
     var roPrc = PlayerInfosMore.offensive_rebound / totalrb * 100;
     var rdPrc = PlayerInfosMore.defensive_rebound / totalrb * 100;
-    var threePointPrc = PlayerInfosMore.three_points * 3 / PlayerInfosMore.points * 100;
-    var twoPointPrc = PlayerInfosMore.two_points * 2 / PlayerInfosMore.points * 100;
+    var threePointPrc = PlayerInfosMore.three_points * 3 / (PlayerInfosMore.points - PlayerInfosMore.free_throw) * 100;
+    var twoPointPrc = PlayerInfosMore.two_points * 2 / (PlayerInfosMore.points - PlayerInfosMore.free_throw) * 100;
 
     const styles = {
       display: 'flex',
