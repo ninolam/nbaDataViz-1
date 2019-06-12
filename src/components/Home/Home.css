@@ -1,5 +1,12 @@
+:root {
+  --main-color: #2D3142;
+  --second-color: #E2813A;
+}
+section{
+  position: relative;
+}
 .Home-container{
-  background: #1F1D1D url('../../assets/imgs/Ballon.png') bottom right;
+  background: var(--main-color) url('../../assets/imgs/Ballon.png') bottom right;
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
@@ -24,7 +31,7 @@ p{
   width: 100%;
 }
 .Home-choice-compare{
-  color: #DD6E1E;
+  color: var(--second-color);
 }
 
 .Home-choice-analyse, .Home-choice-compare{

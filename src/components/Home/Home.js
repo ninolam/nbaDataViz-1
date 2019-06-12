@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './Home.css';
 import ProfileCompare from '../ProfileCompare/ProfileCompare'
+import ProfileResultA from '../ProfileCompare/ProfileResultA'
+import ProfileResultB from '../ProfileCompare/ProfileResultB'
+
 
 class Home extends Component {
-
   state = {
     home: true
   }
@@ -13,7 +15,6 @@ class Home extends Component {
   render() {
     if (this.state.home === true) {
       return (
-
         <div className="Home-container">
           <div className="Home-description">
             <h1 className="mb-10"><b>NBA ANALYSE</b></h1>
@@ -23,12 +24,11 @@ class Home extends Component {
               <p className="Home-choice-analyse">ANALYSER UN JOUEUR</p>
             </div>
           </div>
-
         </div>
       );
     } else {
       return (
-        <ProfileCompare />
+        <ProfileCompare PA={<ProfileResultA/>} PB={<ProfileResultB/>} ref={(ourComponent) => {window.ourComponent = ourComponent}} />
       )
     }
 

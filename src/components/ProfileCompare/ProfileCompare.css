@@ -1,3 +1,54 @@
+/* GENERAL */
+
+:root {
+  --color-player-a: #2D3142;
+  --color-player-b: #E2813A;
+}
+.layer {
+  background-color: #2d3142eb;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.PlayerB .layer {
+  background-color: #e2813aba;
+}
+
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 10px;
+  max-height: 265px;
+  overflow: scroll;
+}
+
+.container ul{
+  max-width: 70%;
+  margin: 0 auto;
+  max-height: 125px;
+  overflow: hidden;
+  position: relative;
+}
+
+li{
+  width: 125px;
+  height: 125px;
+  background-size: contain;
+  margin-right: 10px;
+  line-height: 125px;
+  background-color: white;
+  position: relative;
+}
+
+
+svg{
+  display: block;
+}
+
 select option {
   margin-left: 40px;
 }
@@ -6,41 +57,66 @@ select option {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background:#1F1D1D;
+  background:var(--color-player-a);
 }
 .content-box {
   position: absolute;
   height: 100%;
 }
 .PlayerA{
-  background:#1F1D1D;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 48.5%;
+  width: 50%;
   max-width: 95%;
-  min-width: 2%;
-}
-.PlayerB{
-  background: #DD6E1E;
-  width: 51.5%;
-  -webkit-clip-path: polygon(50px 0%, 100% 0, 100% 100%, 0% 100%);
-clip-path: polygon(50px 0%, 100% 0, 100% 100%, 0% 100%);
-  max-width: 98%;
   min-width: 5%;
 }
-.PlayerA .Player-container{
+
+.PlayerB{
+  background:var(--color-player-b);
+  width: 50%;
+  /* -webkit-clip-path: polygon(50px 0%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(50px 0%, 100% 0, 100% 100%, 0% 100%); */
+  max-width: 95%;
+  min-width: 5%;
+}
+
+/* .ok{
+  -webkit-clip-path: polygon(20px 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(20px 0, 100% 0, 100% 100%, 0% 100%);
+  width: 2%;
+  background:var(--color-player-b);
+  position: absolute;
+  height: 100%;
+  left: 49.5%;
+  z-index: 999999;
+} */
+.PlayerA, .PlayerA .container input, .PlayerA .container select{
   color: #ffffff;
+  fill: #ffffff;
 }
 .Player-container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  height: 180px;
+  height: 300px;
   width: 70%;
   margin: 0 auto;
+}
+.Player-container-plus{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--color-player-b);
+}
+.PlayerA .Player-container-plus{
+  background-color: var(--color-player-a);
 }
 .description{
   font-size: 14px;
@@ -71,14 +147,18 @@ padding-left: 10px;
   font-family: 'Montserrat', sans-serif;
 }
 
+.PlayerA .container .Search-container select{
+  background: url('../../assets/imgs/arrow-white.png') 92% / 12px no-repeat #ffffff;
+}
+
 .resizer {
   position: absolute;
-  z-index: 9999;
+  z-index: 9999999;
   height: 50px;
   width: 50px;
   top: 50%;
-  right: -50px;
-  background-color: #1F1D1D;
+  right: -30px;
+  background-color: var(--color-player-a);
   border-radius: 50%;
   border: 5px solid #ffffff;
   transform: translateY(-50%);
@@ -98,7 +178,6 @@ padding-left: 10px;
 input::-webkit-input-placeholder, input { /* Edge */
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
 }
 input:-ms-input-placeholder, input { /* Internet Explorer 10-11 */
   font-size: 20px;
@@ -107,50 +186,222 @@ input:-ms-input-placeholder, input { /* Internet Explorer 10-11 */
 input::placeholder, input {
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
 }
+
+.PlayerA .container ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+.PlayerA .container ::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+.PlayerA .container :-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+.PlayerA .container :-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+.PlayerB .container ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+.PlayerB .container ::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.PlayerB .container :-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.PlayerB .container :-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
+.list-group-item { 
+  color: black;
+  transition: 0.2s ease;
+
+}
+
 li{
   text-align: center;
   list-style: none;
 }
 .img-player{
   max-width: 120px;
+  max-height: 120px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 3px solid white;
+}
+.img-team{
+  position: absolute;
+  width: 100%;
 }
 .Player-info-container{
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  height: 95%;
 }
 .Player-info{
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
-.Stats-container-hidden{
+.Stats-container{
+  display: flex;
   overflow-x: hidden;
   white-space: nowrap;
-  width: 450px;
+  justify-content: center;
+  max-width: 720px;
+  align-items: center;
+  margin-left: 30px;
 }
 .Stats-item-container{
+  display: inline-block;
+  width: auto;
+}
+.Stats-item-container:nth-child(2), .Stats-item-container:nth-child(3){
+  display: none;
+}
+.Stats-container-plus{
   display: flex;
-  justify-content: center;
-  overflow-x: auto;
-  white-space: nowrap;
-  width: 700px;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 80%;
 }
 .Stats-item{
   width: 200px;
   height: 100px;
-  background-color: #1F1D1D;
   margin-right: 20px;
   margin-bottom: 20px
 }
 
-.PlayerA .Stats-item{
-  background-color: #DD6E1E;
+.PlayerA .Stats-item, .PlayerA .Stats-item-plus, .PlayerB .Search-all-container.fixed select, .PlayerB .Search-all-container.fixed input, .PlayerB .Search-all-container.fixed .Search-container{
+  background-color: var(--color-player-b);
 }
-.PlayerB .Stats-item{
-  background-color: #1F1D1D;
+.PlayerB .Stats-item, .PlayerB .Stats-item-plus{
+  background-color: var(--color-player-a);
+}
+
+.PlayerA .Search-all-container.fixed select, .PlayerA .Search-all-container.fixed input, .PlayerA .Search-all-container.fixed .Search-container{
+  background-color: #3E435C;
+}
+
+.PlayerB .Search-all-container.fixed select, .PlayerB .Search-all-container.fixed input, .PlayerB .Search-all-container.fixed .Search-container{
+  background-color: #FA8D3E;
+}
+
+.PlayerA .Stats-item-plus{
+  -webkit-clip-path: polygon(0 0, 100% 0, 98% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 98% 100%, 0% 100%);
+}
+.PlayerB .Stats-item-plus{
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0% 100%);
+}
+/* .PlayerA .all-content{
+  background-color: var(--color-player-a);
+} */
+.PlayerB .all-content{
+  background-color: var(--color-player-b);
+}
+.all-content{
+  overflow-y: hidden;
+  height: 100%;
+  align-items: flex-end;
+  display: flex;
+}
+.up{
+  transform: translateY(-150%);
+}
+.all-content .Player-container-plus{
+  transition: 1s ease-in;
+}
+.Stats-item-plus{
+  width: 100%;
+  height: 65px;
+  margin-bottom: 20px;
+}
+.PlayerB .Player-container-plus-hide .Stats-item-container-plus{
+  margin-left: 20px;
+}
+.text-up{
+  position: absolute;
+  bottom: 20px;
+  display: inline;
+  background: yellow;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 999;
+}
+.hidden{
+  visibility: hidden;
+}
+
+.Player-container-plus-hide{
+  display: none;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.PlayerB .Player-container-plus-hide{
+  align-items: flex-start;
+}
+.container{
+  width: inherit;
+  display: initial;
+  height: 100%;
+}
+
+.container-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.container-flex-reverse{
+  flex-direction: row-reverse;
+}
+
+.fixed{
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  width: inherit;
+  max-height: 180px;
+  overflow: scroll;
+}
+
+
+.donut-chart-text-value{
+  font-size: 60%!important;
+}
+.donut-chart-text-subtext{
+  font-size: 30%!important;
+}
+
+.donut-chart-text-subtext:last-child{
+  display: none;
+}
+
+.donut-chart-arcs-arcpath-0{
+ fill: white;
+}
+
+.PlayerA .donut-chart-arcs-arcpath-1{
+  fill: var(--color-player-b);
+}
+.PlayerB .donut-chart-arcs-arcpath-1{
+  fill: var(--color-player-a);
+}
+
+.large{
+  width: 300px!important;
+  height: 300px!important;
+}
+
+.radar-chart-category-att, .radar-chart-category-def{
+  position: relative;
+  z-index: 99999;
 }
