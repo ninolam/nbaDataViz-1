@@ -10,6 +10,8 @@ export default class RadarChart extends Component {
   constructor() {
     super()
     this.state = {
+      playerA: [],
+      playerB:[],
       data: {
       labels: [ '% de lancers francs', '% de reussite', '% de 2 points', '% de 3 points'],
       datasets: [
@@ -30,22 +32,19 @@ export default class RadarChart extends Component {
   }
 
   componentDidUpdate(){
-    // var parentA = document.querySelector('.PlayerA');
-    // var parentB = document.querySelector('.PlayerB');
-    // var radar = document.querySelector('.radar-chart');
-    // console.log(parentA.childNodes[0].className, parentB.childNodes[0].className);
-    
-    // if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
-    //   radar.style.display = "block";
-    // } 
-    // else {
-    //   radar.style.display = "none"
-    // }
+    var parentA = document.querySelector('.PlayerA');
+    var parentB = document.querySelector('.PlayerB');
+    var radar = document.querySelector('.radar-chart');    
+    if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
+      radar.style.display = "block";
+    }
+    else {
+      radar.style.display = "none"
+    }
   }
   componentDidMount(){
     window.addEventListener('click', this.handleClick);
   }
-
 
   handleClick(){    
     setTimeout(() => {
@@ -55,6 +54,10 @@ export default class RadarChart extends Component {
       let newState = Object.assign({}, this.state);
       var playerA = window.ProfileSearchA.state.updateItemMoreA
       var playerB = window.ProfileSearchB.state.updateItemMoreB
+      this.setState({
+        playerA:playerA,
+        playerB:playerB
+      });
       newState.data.datasets[0].label = playerA.player_name;
       newState.data.datasets[1].label = playerB.player_name;
       if ( this.state.data.labels[0] === '% de lancers francs')
@@ -111,42 +114,10 @@ export default class RadarChart extends Component {
           <button onClick={this.handleAtt} className="radar-chart-category-att active">Attaque</button>
           <button onClick={this.handleDef} className="radar-chart-category-def">Defense</button>
         </div>
+        <img className="absolute logo-team-first-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerA.short_name + ".png"}/>
+        <img className="absolute logo-team-second-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerB.short_name + ".png"}/>
+        <div className="layer-radar"></div>
         <Radar options={{ tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
-        {/* <div class="timeline">
-      <div class="events">
-        <ol>
-          <ul>
-            <li>
-              <a class="selected">2010-2011</a>
-            </li>
-            <li>
-              <a>2011-2012</a>
-            </li>
-            <li>
-              <a>2012-2013</a>
-            </li>
-            <li>
-              <a>2013-2014</a>
-            </li>
-            <li>
-              <a>2014-2015</a>
-            </li>
-            <li>
-              <a>2015-2016</a>
-            </li>
-            <li>
-              <a>2016-2017</a>
-            </li>
-            <li>
-              <a>2017-2018</a>
-            </li>
-            <li>
-              <a>2018-2019</a>
-            </li>
-          </ul>
-        </ol>
-      </div>
-    </div> */}
       </div>
     );
   }

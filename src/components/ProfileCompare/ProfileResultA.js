@@ -42,6 +42,21 @@ class ProfileResultA extends Component {
   componentDidUpdate() {
     this.clearValue()
   }
+  renderPost(param) {
+    switch(param) {
+      case 'PG':
+        return 'Meneur';
+      case 'SG':
+        return 'Arrière';
+      case 'SF':
+        return 'Ailier';
+      case 'PF':
+        return 'Ailier fort';
+      case 'C':
+        return 'Pivot';
+  
+    }
+  }
   render() {
     var PlayerInfos = this.props.updateItemA;
     var PlayerInfosMore = this.props.updateItemMoreA;
@@ -77,13 +92,13 @@ class ProfileResultA extends Component {
         
         <div className="container">
           {this.props.renderSearch}
-          <section style = {{  backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat", backgroundSize: "70%"}} className="all-content">
+          <section style = {{  backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat"}} className="all-content">
             <div className="layer"></div>
             <div className="Player-container Player-info-container">
               <img className="img-player" alt="player" src={'https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=' + PlayerInfos.name.replace(' ', '-')} />
               <div className="Player-info">
                 <div>
-                  <p className="poste">Poste: <b>{PlayerInfosMore.post}</b></p>
+                  <p className="poste">Poste: <b>{PlayerInfosMore.post} ({this.renderPost(PlayerInfosMore.post)})</b></p>
                   <p className="equipe">Equipe: <b>{PlayerInfosMore.name}</b></p>
                   <p className="age">Age: <b>{ 2019 - PlayerInfosMore.birth_year} ans</b></p>
                 </div>

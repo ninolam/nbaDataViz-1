@@ -6,9 +6,10 @@
 body, html{
   font-family: 'Montserrat', sans-serif!important;
   position: relative;
-  background: white;
   z-index: -11;
-  height: 100%; overflow: auto;
+  height: 100%; 
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .left {
