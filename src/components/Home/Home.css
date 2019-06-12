@@ -6,11 +6,11 @@ section{
   position: relative;
 }
 .Home-container{
-  background: var(--main-color) url('../../assets/imgs/Ballon.png') bottom right;
+  background: var(--main-color) url('../../assets/imgs/BG.jpg');
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
-  background-size: 30%;
+  background-size: 100%;
 }
 
 .Home-description{
@@ -22,24 +22,57 @@ section{
   color: #ffffff;
 }
 
+.mb-10 {
+  font-size: 2.3rem;
+}
+
+.mb-70 {
+  padding-top: 10px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 200;
+}
+
 p{
   font-weight: 100;
 }
 .Home-choice{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  margin-right: 40px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
 }
+
 .Home-choice-compare{
+  background-color: var(--second-color);
+  color: #fff;
+  border: 1px solid var(--second-color);
+}
+
+.Home-choice-compare:hover{
+  background-color: #D6742E;
+  color: #fff;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.Home-choice-analyse:hover{
+  background-color: #fff;
   color: var(--second-color);
+  transition: 0.8s;
+  cursor: pointer;
+}
+
+.Home-choice-analyse{
+border: 1px solid #fff;
 }
 
 .Home-choice-analyse, .Home-choice-compare{
   text-decoration: none;
-  border: 1px solid #575757;
-  width: 47%;
-  border-radius: 10px;
+  width: 290px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   text-align: center;
   padding: 10px 0;
   font-weight: bold;
+
 }

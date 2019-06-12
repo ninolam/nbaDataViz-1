@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import './ProfileCompare.css';
-import resize from '../../assets/imgs/resize.png';
+import resize from '../../assets/imgs/onvalappeler.svg';
 import ProfileSearchB from './ProfileSearchB'
 import ProfileSearchA from './ProfileSearchA'
 import RadarChart from './RadarChart'
 
 class ProfileCompare extends Component  {
-  
+
   constructor(props) {
     super(props)
-    this.state = { 
+    this.state = {
       ProfileResult: false,
       updateItemMoreA: [],
       updateItemMoreB: [],
      }
   }
-  
-  
+
+
   changeView() {
     this.setState({ ProfileResult: true });
   }
@@ -26,12 +26,12 @@ class ProfileCompare extends Component  {
   //     this.setState({
   //       updateItemA : window.ProfileSearchA.state.updateItemA,
   //       updateItemB : window.ProfileSearchA.state.updateItemB
-  //     })   
+  //     })
   //   })
   // }
 
-  render() {    
-    
+  render() {
+
     function changevalue(e) {
       e.preventDefault();
 
@@ -58,7 +58,7 @@ class ProfileCompare extends Component  {
         var secondItemB = document.querySelector('.PlayerB .Stats-item-container:nth-child(2)')
         var thirdItemB = document.querySelector('.PlayerB .Stats-item-container:last-child')
         var thirdItemBisB = document.querySelector('.PlayerB .Stats-item-container-plus .Stats-item-container')
-        
+
         var secondItemA = document.querySelector('.PlayerA .Stats-item-container:nth-child(2)')
         var thirddItemA = document.querySelector('.PlayerA .Stats-item-container:nth-child(3)')
         var thirdItemA = document.querySelector('.PlayerA .Stats-item-container:last-child')
@@ -122,9 +122,9 @@ class ProfileCompare extends Component  {
         }
       }
     };
-    return ( 
+    return (
       <section>
-        
+
       <div className="Players-container">
         <div  className="content-box PlayerA left">
           <ProfileSearchA ref={(ProfileSearchA) => {window.ProfileSearchA = ProfileSearchA}} id={"A"} />

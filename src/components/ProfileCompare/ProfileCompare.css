@@ -26,6 +26,11 @@ ul{
   overflow: scroll;
 }
 
+.Players-container .mb-10 {
+  color: #fff;
+  padding-bottom: 10px;
+}
+
 .container ul{
   max-width: 70%;
   margin: 0 auto;
@@ -118,25 +123,31 @@ select option {
 .PlayerA .Player-container-plus{
   background-color: var(--color-player-a);
 }
-.description{
-  font-size: 14px;
+.Player-container .description{
+  color: #fff;
+  font-size: 1.0rem;
+  line-height: 1.6;
+  font-weight: 200;
 }
 .Search-container{
   display: flex;
   justify-content: space-between;
 }
+
 .Search-container input{
-  width: 65%;
+  padding-left: 10px;
+  width: 75%;
   height: 42px;
   -webkit-clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
 clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
-padding-left: 10px;
 }
+
 .Search-container select{
-  width: 35%;
+  width: 25%;
+  padding-right: 10px;
   height: 42px;
-  -webkit-clip-path: polygon(6% 0%, 100% 0, 100% 100%, 0% 100%);
-  clip-path: polygon(6% 0%, 100% 0, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(9% 0%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(9% 0%, 100% 0, 100% 100%, 0% 100%);
   border-radius: 0;
   -webkit-appearance: none;
   text-align-last: center;
@@ -176,15 +187,21 @@ padding-left: 10px;
   cursor: ew-resize;
 }
 input::-webkit-input-placeholder, input { /* Edge */
-  font-size: 20px;
+  font-size: 14px;
+    padding-left: 10px;
+    font-weight: 200;
   font-family: 'Montserrat', sans-serif;
 }
 input:-ms-input-placeholder, input { /* Internet Explorer 10-11 */
-  font-size: 20px;
+  font-size: 14px;
+    padding-left: 10px;
+    font-weight: 200;
   font-family: 'Montserrat', sans-serif;
 }
 input::placeholder, input {
-  font-size: 20px;
+  font-size: 14px;
+    padding-left: 10px;
+    font-weight: 200;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -202,19 +219,19 @@ input::placeholder, input {
 }
 
 .PlayerB .container ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: black;
+  color: #404040;
 }
 .PlayerB .container ::-moz-placeholder { /* Firefox 19+ */
-  color: black;
+  color: #404040;
 }
 .PlayerB .container :-ms-input-placeholder { /* IE 10+ */
-  color: black;
+  color: #404040;
 }
 .PlayerB .container :-moz-placeholder { /* Firefox 18- */
-  color: black;
+  color: #404040;
 }
 
-.list-group-item { 
+.list-group-item {
   color: black;
   transition: 0.2s ease;
 
@@ -287,6 +304,10 @@ li{
 
 .PlayerB .Search-all-container.fixed select, .PlayerB .Search-all-container.fixed input, .PlayerB .Search-all-container.fixed .Search-container{
   background-color: #FA8D3E;
+}
+
+.Player-container .Search-all-container {
+  padding-top: 30px;
 }
 
 .PlayerA .Stats-item-plus{
