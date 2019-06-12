@@ -24,13 +24,6 @@ class ProfileSearchB extends Component {
 
   searchInput = createRef();
 
-  toto() {
-    this.setState({
-      profileResult: false
-    });
-  }
-
-
   async filterList(event){
     
     console.log(event.target.value, this.searchInput.current.value);
@@ -83,7 +76,7 @@ class ProfileSearchB extends Component {
     return (
       <div className="Search-all-container">
         <div className="Search-container">
-          <input  type="text" placeholder="Recherche ..." onChange={this.filterList} ref={this.searchInput} />
+          <input type="text" placeholder="Recherche ..." onChange={this.filterList} ref={this.searchInput} />
           <select onChange={this.onSelectChange} value={this.state.value}>
             <option value="2018-19">2018-2019</option>
             <option value="2017-18">2017-2018</option>
@@ -96,23 +89,24 @@ class ProfileSearchB extends Component {
             <option value="2010-11">2010-2011</option>
           </select>
         </div>
-        <ul className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
+        <div className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
           
           {
-            this.state.items.map((item, i) => {
+            this.state.items.map((item) => {
                   if (this.state.error === false) {
-                    return (<li className="list-group-item mb-10" 
-                                style={{ backgroundImage: "url(" + "https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-') + ")" }}
-                                onMouseOver={(e) => { var list = document.querySelectorAll('.PlayerB ul li'); list[i].textContent = item.name; list[i].style.opacity = 0.5 }}
-                                onMouseOut={() => { var list = document.querySelectorAll('.PlayerB ul li'); list[i].textContent = ""; list[i].style.opacity = 1 }}
-                                onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
-                                var dataMore = await api.getCategoriesStats(item.id_player_stat);    
-                                this.setState({updateItemMoreB: dataMore, updateItemB: Players[0], ProfileResult: true, writing: false }); var inputValue = document.querySelector('.PlayerB .Search-all-container input'); inputValue.value = Players[0].name }}
-                                data-category={item.name}></li>);
+                    return (<div className="list-group-item" 
+                    onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
+                    var dataMore = await api.getCategoriesStats(item.id_player_stat);    
+                    this.setState({updateItemMoreB: dataMore, updateItemB: Players[0], ProfileResult: true, writing: false });
+                    var inputValue = document.querySelector('.PlayerB .Search-all-container input'); inputValue.value = Players[0].name }}
+                    data-category={item.name}>
+                      <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')}/>
+                      <p>{item.name}</p>
+                    </div>);
                   }  
               
             })} 
-        </ul>
+        </div>
       </div>
     )
   }
