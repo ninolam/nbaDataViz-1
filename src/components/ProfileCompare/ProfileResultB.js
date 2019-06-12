@@ -91,39 +91,45 @@ class ProfileResultA extends Component {
                   <p className="universite">Université: <b>{PlayerInfosMore.college === "N/A" ? "Aucune" : PlayerInfosMore.college }</b></p>
                 </div>
                 </div>
-              <div className="Stats-container Stats-container-hidden">
+                <div className="Stats-container Stats-container-hidden">
                 <div className="Stats-item-container">
                   <div className="Stats-item" id="minute">
-                    <p>{PlayerInfosMore.minute_played} Minute jouée</p>
-                    <span>{PlayerInfosMore.rankMinutePlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                    <p>{PlayerInfosMore.rankMinutePlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.minute_played} </p>
+                    <p>Minutes jouées</p>
 
                   </div>
                   <div className="Stats-item" id="points">
-                  <p>{PlayerInfosMore.points} Points marquées</p>
-                    <span>{PlayerInfosMore.rankPoint} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  <p>{PlayerInfosMore.rankPoint} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                  <p>{PlayerInfosMore.points}</p>
+                    <p>Points marquées</p>
                   </div>
                 </div>
 
                 <div className="Stats-item-container">
                   <div className="Stats-item" id="passes">
-                  <p>{PlayerInfosMore.assist} Passes décisives</p>
-                    <span>{PlayerInfosMore.rankAssit} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                    <p>{PlayerInfosMore.rankAssit} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.assist} </p>
+                    <p>Passes décisives</p>
                   </div>
                   <div className="Stats-item" id="matchJouer">
-                  <p>{PlayerInfosMore.match_played} Matchs Joués</p>
-                    <span>{PlayerInfosMore.rankMatchPlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                    <p>{PlayerInfosMore.rankMatchPlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.match_played} </p>
+                  <p>Matchs Joués</p>
                   </div>
                   
                 </div>
 
                 <div className="Stats-item-container">
                   <div className="Stats-item" id="rebondO">
-                  <p>{PlayerInfosMore.offensive_rebound} Rebond Offensive</p>
-                    <span>{PlayerInfosMore.rankOffensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                    <p>{PlayerInfosMore.rankOffensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.offensive_rebound} </p>
+                  <p>Rebond Offensive</p>
                   </div>
                   <div className="Stats-item" id="rebondD">
-                  <p>{PlayerInfosMore.defensive_rebound} Rebond Defensive</p>
-                    <span>{PlayerInfosMore.rankDefensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</span>
+                  <p>{PlayerInfosMore.rankDefensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                  <p>{PlayerInfosMore.defensive_rebound}</p>
+                    <p>Rebond Defensive</p>
                   </div>
                   
                 </div>

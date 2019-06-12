@@ -76,7 +76,7 @@ class ProfileSearchB extends Component {
     return (
       <div className="Search-all-container">
         <div className="Search-container">
-          <input  type="text" placeholder="Recherche ..." onChange={this.filterList} ref={this.searchInput} />
+          <input type="text" placeholder="Recherche ..." onChange={this.filterList} ref={this.searchInput} />
           <select onChange={this.onSelectChange} value={this.state.value}>
             <option value="2018-19">2018-2019</option>
             <option value="2017-18">2017-2018</option>
