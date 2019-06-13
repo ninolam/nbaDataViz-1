@@ -1,0 +1,63 @@
+
+.absolute{
+  position: absolute;
+  max-width: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.logo-team-first-player{
+  left: -150px
+}
+.logo-team-second-player{
+  right: -150px
+}
+.layer-radar{
+  background-color: #f2efe5eb;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.radar-chart-container{
+  min-height: 100vh;
+  width: 100%;
+}
+.radar-chart{
+  height: 650px;
+}
+.line-chart{
+  height: 100px;
+
+}
+.radar-chart, .chartjs-render-monitor{
+  position: relative;
+  z-index: 5;
+  padding-bottom: 40px;
+}
+  .radar-chart, .radar-chart-category, section{
+    background-color: #F2EFE5;
+  }
+
+  .radar-chart-category{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 30%;
+    margin: 20px auto;
+  }
+  
+  
+  .radar-chart-category button{
+    font-family: 'Montserrat', sans-serif!important;
+    padding: 10px 40px;
+    border: 1px solid black;
+    outline: none;
+    text-transform: uppercase;
+    transition: 0.5s ease-out;
+  }
+  
+  .radar-chart-category .active{
+    color:#ffffff;
+    background-color: #000000;
+  }
