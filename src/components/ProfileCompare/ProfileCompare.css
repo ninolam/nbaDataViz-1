@@ -240,18 +240,19 @@ input::placeholder, input {
 	max-height: 120px;
 	border-radius: 50%;
 	border: 2px solid #E2E8F0;
+	margin-bottom: 10px;
 }
 .img-team{
 	position: absolute;
 	width: 100%;
 }
 .Player-info-container{
-	justify-content: space-around;
+	justify-content: flex-end;
 	align-items: center;
-	height: 85%;
+	height: 95%;
 }
 .Player-info{
-  line-height: 3;
+	line-height: 1.7;
 	display: flex;
 	justify-content: space-around;
 	width: 110%;
@@ -283,12 +284,12 @@ input::placeholder, input {
 }
 .Stats-item{
 	width: 200px;
-	height: 100px;
+	height: 106px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 }
 .Stats-item p{
 	padding: 0 10px;

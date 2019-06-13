@@ -71,8 +71,6 @@ export default class RadarChart extends Component {
 
   handleAtt(){
     let newState = Object.assign({}, this.state);
-    var playerA = window.ProfileSearchA.state.updateItemMoreA
-    var playerB = window.ProfileSearchB.state.updateItemMoreB
     newState.data.labels = [ '% de réussite aux lancers francs', '% de réussite global', '% de réussite aux paniers à 2 points', '% de réussite aux paniers à 3 points'];
     this.setState(newState);
     this.setState({
@@ -83,8 +81,6 @@ export default class RadarChart extends Component {
 
   handleDef(){
     let newState = Object.assign({}, this.state);
-    var playerA = window.ProfileSearchA.state.updateItemMoreA
-    var playerB = window.ProfileSearchB.state.updateItemMoreB
     newState.data.labels = [ '% d\'interceptions', '% de blocks', '% de rebond defensif', '% de fautes'];
     this.setState(newState);
     this.setState({
@@ -106,12 +102,7 @@ export default class RadarChart extends Component {
           <img className="absolute logo-team-first-player" src={this.state.playerA.logo}/>
           <img className="absolute logo-team-second-player" src={this.state.playerB.logo}/>
           <div className="layer-radar"></div>
-          <Radar options={{ legend: {
-            labels: {
-                // This more specific font property overrides the global property
-                fontColor: 'black'
-            }
-        }, maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
+          <Radar options={{ scale: {pointLabels: {fontSize: 13, fontStyle: "bold", fontColor: "#000000", fontFamily:"'Montserrat', sans-serif"}}, maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
         </div>
       </section>
     );

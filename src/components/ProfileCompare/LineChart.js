@@ -9,6 +9,12 @@ import {Line} from 'react-chartjs-2';
 import './RadarChart.css';
 import './ProfileSearchA'
 import './ProfileSearchB'
+import { defaults } from 'react-chartjs-2'
+
+
+defaults.global.defaultFontSize = 14;
+defaults.global.defaultFontColor = '#000000';
+defaults.global.defaultFontFamily = 'Montserrat';
 
 export default class LineChart extends Component {
   constructor() {
@@ -19,22 +25,17 @@ export default class LineChart extends Component {
         datasets: [
           {
             fill: true,
-            lineTension: 0.1,
-            backgroundColor: '#db7e5273',
-            // borderColor: 'orange',
-            // pointBorderColor: 'rgba(75,192,192,1)',
-            // pointBackgroundColor: '#fff',
-            // pointBorderWidth: 1,
-            // pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-            // pointHoverBorderColor: 'rgba(220,220,220,1)',
-            // pointHoverBorderWidth: 6,
-            // pointRadius: 1,
+            lineTension: 0.6,
+            backgroundColor: '#2d314285',
+            pointRadius: 4,
+            pointHoverRadius: 6,
           },
           {
             fill: true,
             lineTension: 0.6,
-            backgroundColor: '#2d314285',
-            // borderColor: 'white',
+            backgroundColor: '#db7e5273',
+            pointRadius: 4,
+            pointHoverRadius: 6,
           }
         ]
       }
@@ -60,10 +61,7 @@ export default class LineChart extends Component {
         newState.data.datasets[0].data = [];
         newState.data.datasets[1].data = [];
         playerA.pointCarrier.map(item => newState.data.datasets[0].data.push(item.points))
-        console.log(newState.data.datasets[0].data);
         playerB.pointCarrier.map(item => newState.data.datasets[1].data.push(item.points))
-        console.log(newState.data.datasets[1].data);
-
       }  
       this.setState({newState});
     }, 300);
@@ -72,7 +70,9 @@ export default class LineChart extends Component {
     
     return (
     <div className="line-chart">
-        <Line options={{steppedLine: false, maintainAspectRatio: false, legend: false }} data={this.state.data} />
+        <Line options={{axisX:{
+        labelFontSize: 40
+      },scales: { xAxes: [{gridLines: {display: false,}}],yAxes: [{display: false,}]},maintainAspectRatio: false,tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + ' points';}}}, pointLabels: {fontSize: 10, fontColor: "#000000", fontFamily:"'Montserrat', sans-serif"}, legend: false }} data={this.state.data} />
     </div>
     );
   }

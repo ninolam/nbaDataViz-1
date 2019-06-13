@@ -30,10 +30,10 @@
   height: 100px;
 
 }
-.radar-chart, .chartjs-render-monitor{
+.radar-chart, .radar-chart .chartjs-render-monitor{
   position: relative;
   z-index: 5;
-  padding-bottom: 40px;
+  margin-bottom: 70px;
 }
   .radar-chart, .radar-chart-category, section{
     background-color: #F2EFE5;
@@ -46,7 +46,6 @@
     width: 30%;
     margin: 20px auto;
   }
-
 
   .radar-chart-category button{
     font-family: 'Montserrat', sans-serif!important;
