@@ -4,7 +4,7 @@ import resize from '../../assets/imgs/onvalappeler.svg';
 import ProfileSearchB from './ProfileSearchB'
 import ProfileSearchA from './ProfileSearchA'
 import RadarChart from './RadarChart'
-// import LineChart from './LineChart'
+import LineChart from './LineChart'
 
 
 class ProfileCompare extends Component  {
@@ -18,11 +18,9 @@ class ProfileCompare extends Component  {
      }
   }
 
-
   changeView() {
     this.setState({ ProfileResult: true });
   }
-  
   
   render() {
     
@@ -135,7 +133,7 @@ class ProfileCompare extends Component  {
         </div>
       </div>
       <RadarChart  updateItemA={this.state.updateItemA} updateItemB={this.state.updateItemB} />
-      {/* <LineChart  updateItemA={this.state.updateItemA} updateItemB={this.state.updateItemB} /> */}
+      <LineChart  updateItemA={this.state.updateItemA} updateItemB={this.state.updateItemB} />
 
     </section>
     );
