@@ -5,10 +5,10 @@
 
 
 import React, {Component} from 'react';
-import {Line} from 'react-chartjs-2';
-import './RadarChart.css';
-import './ProfileSearchA'
-import './ProfileSearchB'
+// import {Line} from 'react-chartjs-2';
+// import './RadarChart.css';
+// import './ProfileSearchA'
+// import './ProfileSearchB'
 
 export default class LineChart extends Component {
   constructor() {
@@ -41,43 +41,43 @@ export default class LineChart extends Component {
         ]
       }
     }   
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
  
   }
-  componentDidMount(){
-    window.addEventListener('click', this.handleClick);
-  }
+//   componentDidMount(){
+//     window.addEventListener('click', this.handleClick);
+//   }
 
-  handleClick(){    
-    setTimeout(() => {
-    //   console.log(window.ProfileSearchA.state.updateItemMoreA);
-    //   console.log(window.ProfileSearchB.state.updateItemMoreB);
+//   handleClick(){    
+//     setTimeout(() => {
+//     //   console.log(window.ProfileSearchA.state.updateItemMoreA);
+//     //   console.log(window.ProfileSearchB.state.updateItemMoreB);
 
-      let newState = Object.assign({}, this.state);
-      var playerA = window.ProfileSearchA.state.updateItemMoreA
-      var playerB = window.ProfileSearchB.state.updateItemMoreB
+//       let newState = Object.assign({}, this.state);
+//       var playerA = window.ProfileSearchA.state.updateItemMoreA
+//       var playerB = window.ProfileSearchB.state.updateItemMoreB
 
-      newState.data.datasets[0].label = playerA.player_name;
-      newState.data.datasets[1].label = playerB.player_name;
-      var parentA = document.querySelector('.PlayerA');
-      var parentB = document.querySelector('.PlayerB');
-      var radar = document.querySelector('.radar-chart-container');    
-      if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
-    //   newState.data.datasets[0].data = [ playerA.pointCarrier[8].points, playerA.pointCarrier[7].points, playerA.pointCarrier[6].points, playerA.pointCarrier[5].points, playerA.pointCarrier[4].points, playerA.pointCarrier[3].points, playerA.pointCarrier[2].points, playerA.pointCarrier[1].points, playerA.pointCarrier[0].points];
-    //   newState.data.datasets[1].data = [ playerB.pointCarrier[8].points, playerB.pointCarrier[7].points, playerB.pointCarrier[6].points, playerB.pointCarrier[5].points, playerB.pointCarrier[4].points, playerB.pointCarrier[3].points, playerB.pointCarrier[2].points, playerB.pointCarrier[1].points, playerB.pointCarrier[0].points];
-console.log(this.playerA.data.map((item) => item.points)
-);
-    }  
+//       newState.data.datasets[0].label = playerA.player_name;
+//       newState.data.datasets[1].label = playerB.player_name;
+//       var parentA = document.querySelector('.PlayerA');
+//       var parentB = document.querySelector('.PlayerB');
+//       var radar = document.querySelector('.radar-chart-container');    
+//       if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
+//     //   newState.data.datasets[0].data = [ playerA.pointCarrier[8].points, playerA.pointCarrier[7].points, playerA.pointCarrier[6].points, playerA.pointCarrier[5].points, playerA.pointCarrier[4].points, playerA.pointCarrier[3].points, playerA.pointCarrier[2].points, playerA.pointCarrier[1].points, playerA.pointCarrier[0].points];
+//     //   newState.data.datasets[1].data = [ playerB.pointCarrier[8].points, playerB.pointCarrier[7].points, playerB.pointCarrier[6].points, playerB.pointCarrier[5].points, playerB.pointCarrier[4].points, playerB.pointCarrier[3].points, playerB.pointCarrier[2].points, playerB.pointCarrier[1].points, playerB.pointCarrier[0].points];
+// console.log(this.playerA.data.map((item) => item.points)
+// );
+//     }  
       
-      this.setState({newState});
-    }, 300);
+//       this.setState({newState});
+//     }, 300);
     
-  }
+//   }
   render() {      
     
     return (
     <div className="line-chart">
-        <Line options={{ maintainAspectRatio: false, legend: false }} data={this.state.data} />
+        {/* <Line options={{ maintainAspectRatio: false, legend: false }} data={this.state.data} /> */}
     </div>
     );
   }
