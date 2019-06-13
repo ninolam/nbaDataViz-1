@@ -5,7 +5,6 @@ import './ProfileSearchA'
 import './ProfileSearchB'
 
 
-
 export default class RadarChart extends Component {
   constructor() {
     super()
