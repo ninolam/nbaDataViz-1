@@ -4,8 +4,9 @@
 	--color-player-b: #E2813A;
 }
 .layer {
-	background-color: #2d3142eb;
+	background-color: #2d3142;
 	position: absolute;
+  opacity: 0.98;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -92,6 +93,7 @@ select option {
 	justify-content: space-between;
 }
 .Search-container input{
+  margin-bottom: 4px;
 	padding-left: 15px;
 	width: 75%;
 	height: 42px;
@@ -229,7 +231,7 @@ input::placeholder, input {
 	max-width: 120px;
 	max-height: 120px;
 	border-radius: 50%;
-	border: 3px solid white;
+	border: 2px solid #E2E8F0;
 }
 .img-team{
 	position: absolute;
@@ -241,13 +243,14 @@ input::placeholder, input {
 	height: 85%;
 }
 .Player-info{
+  line-height: 3;
 	display: flex;
 	justify-content: space-around;
-	width: 100%;
+	width: 110%;
 }
 .Stats-container{
 	display: flex;
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 	white-space: nowrap;
 	justify-content: center;
 	max-width: 720px;
