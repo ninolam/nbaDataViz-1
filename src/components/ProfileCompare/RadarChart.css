@@ -1,7 +1,7 @@
 
 .absolute{
   position: absolute;
-  width: 400px;
+  max-width: 50%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -20,11 +20,11 @@
   height: 100%;
 }
 .radar-chart-container{
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100%;
 }
 .radar-chart{
-  height: 550px;
+  height: 650px;
 }
 .radar-chart, .chartjs-render-monitor{
   position: relative;
