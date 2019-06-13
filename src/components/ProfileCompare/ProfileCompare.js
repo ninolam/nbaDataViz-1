@@ -39,8 +39,6 @@ class ProfileCompare extends Component  {
         var box2 = document.querySelector('.PlayerB');
         var PlayerContainerA = document.querySelector('.PlayerA .Player-container');
         var PlayerContainerB = document.querySelector('.PlayerB .Player-container');
-        var ContainerA = document.querySelector('.PlayerA .container');
-        var ContainerB = document.querySelector('.PlayerB .container');
         var contentA = document.querySelector('.PlayerA .Stats-container');
         var contentB = document.querySelector('.PlayerB .Stats-container');
         var leftHeight = (parseFloat(window.getComputedStyle(box1, '').width) + e.movementX) * bodyWidth;
@@ -64,7 +62,8 @@ class ProfileCompare extends Component  {
 
         if (box1.style.width >= "70%" && box1.style.width <= "71%") {
           box1.style.width = leftHeight + 25 + '%';
-          ContainerB.style.visibility = "hidden";
+          box2.children[0].style.visibility = "hidden";
+          console.log(box2.children[0]);
           if (PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container' && box1.style.width > "72%") {
             contentA.classList.remove("Stats-container-hidden");
             PlayerContainerPlusA.style.display = "flex";
@@ -77,8 +76,8 @@ class ProfileCompare extends Component  {
         }
         else if (box1.style.width >= "84%" && box1.style.width <= "85%") {
           box1.style.width = '50%';
-          ContainerB.style.visibility = "visible"
-          if (PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container') {
+          box2.children[0].style.visibility = "visible";
+            if (PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container') {
             contentA.classList.add("Stats-container-hidden");
             PlayerContainerPlusA.style.display = "none"
             contentA.appendChild(lastItemA);
@@ -92,7 +91,8 @@ class ProfileCompare extends Component  {
 
         else if (box1.style.width >= "30%" && box1.style.width <= "31%") {
           box1.style.width = leftHeight - 30 + '%';
-          ContainerA.style.visibility = "hidden"
+          box1.children[0].style.visibility = "hidden";
+
           if (PlayerContainerB.children[2].className.split(" ")[0] === 'Stats-container' && box1.style.width < "29%") {
             contentB.classList.remove("Stats-container-hidden");
             PlayerContainerPlusB.style.display = "flex";
@@ -105,7 +105,8 @@ class ProfileCompare extends Component  {
         }
         else if (box1.style.width >= "14%" && box1.style.width <= "15%") {
           box1.style.width = '50%';
-          ContainerA.style.visibility = "visible"
+          box1.children[0].style.visibility = "visible";
+
           if (PlayerContainerB.children[2].className.split(" ")[0] === 'Stats-container') {
             contentB.classList.add("Stats-container-hidden");
             PlayerContainerPlusB.style.display = "none";

@@ -34,7 +34,7 @@ export default class RadarChart extends Component {
   componentDidUpdate(){
     var parentA = document.querySelector('.PlayerA');
     var parentB = document.querySelector('.PlayerB');
-    var radar = document.querySelector('.radar-chart');    
+    var radar = document.querySelector('.radar-chart-container');    
     if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
       radar.style.display = "block";
     }
@@ -110,16 +110,18 @@ export default class RadarChart extends Component {
   render() {      
     
     return (
-      <div className="radar-chart">
-        <div className="radar-chart-category">
-          <button onClick={this.handleAtt} className="radar-chart-category-att active">Attaque</button>
-          <button onClick={this.handleDef} className="radar-chart-category-def">Defense</button>
+      <section className="radar-chart-container">
+        <div className="radar-chart">
+          <div className="radar-chart-category">
+            <button onClick={this.handleAtt} className="radar-chart-category-att active">Attaque</button>
+            <button onClick={this.handleDef} className="radar-chart-category-def">Defense</button>
+          </div>
+          <img className="absolute logo-team-first-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerA.short_name + ".png"}/>
+          <img className="absolute logo-team-second-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerB.short_name + ".png"}/>
+          <div className="layer-radar"></div>
+          <Radar options={{ maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
         </div>
-        <img className="absolute logo-team-first-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerA.short_name + ".png"}/>
-        <img className="absolute logo-team-second-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerB.short_name + ".png"}/>
-        <div className="layer-radar"></div>
-        <Radar options={{ maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
-      </div>
+      </section>
     );
   }
 }

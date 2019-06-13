@@ -19,10 +19,10 @@ class Home extends Component {
         <div className="Home-container">
           <div className="Home-description">
           <h1 className="mb-10"><img alt="resize" src={logo} /></h1>
-            <p className="mb-70">Choississez le joueur ou l’équipe que vous souhaitez analysé depuis les 10 <br /> dernieres années.</p>
+            <p className="mb-70">Choisissez le joueur que vous souhaitez comparez, si vous souhaitez <br /> seulement analyser un joueur faites glisser le rond vers la droite.</p>
             <div className="Home-choice">
               <p onClick={this.handleClick.bind(this)} className="Home-choice-compare">COMPARER DEUX JOUEURS</p>
-              <p className="Home-choice-analyse">ANALYSER UN JOUEUR</p>
+              {/* <p className="Home-choice-analyse">ANALYSER UN JOUEUR</p> */}
             </div>
           </div>
         </div>

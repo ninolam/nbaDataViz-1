@@ -63,7 +63,7 @@ class ProfileSearchA extends Component {
           <h2 className="Player-title mb-10">
             Joueur A
           </h2>
-          <p className="description mb-10">Choississez le joueur ou l’équipe que vous souhaitez comparez, si vous souhaitez seulement analyser un joueur glissez le rond vers la droite.</p>
+          <p className="description mb-10">Choisissez le joueur que vous souhaitez comparez, si vous souhaitez seulement analyser un joueur faites glisser le rond vers la droite.</p>
           {this.renderSearch()}
         </div>
       );

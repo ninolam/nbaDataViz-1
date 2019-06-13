@@ -27,7 +27,7 @@ class ProfileResultA extends Component {
     var donutSubTitleB = document.querySelector('.PlayerA .donut-chart:last-child .donut-chart-text-subtext')
 
     donutTitleB.textContent = totalrb
-    donutSubTitleB.textContent = "Rebond";
+    donutSubTitleB.textContent = "Rebonds";
   }
 
   async componentDidMount() {
@@ -76,11 +76,11 @@ class ProfileResultA extends Component {
     }
 
     const title = "Paniers"
-    const titleR = "Rebond"
+    const titleR = "Rebonds"
 
     const data = [
       { name: "2 points", value: Math.round(twoPointPrc) },
-      { name: "3 Point", value: Math.round(threePointPrc) },
+      { name: "3 points", value: Math.round(threePointPrc) },
     ]
     const dataR = [
       { name: "Offensive", stroke: "#22594e", strokeWidth: 6, value: Math.round(roPrc) },
