@@ -108,6 +108,7 @@ export default class RadarChart extends Component {
     }
   }
   render() {      
+    
     return (
       <div className="radar-chart">
         <div className="radar-chart-category">
@@ -117,7 +118,7 @@ export default class RadarChart extends Component {
         <img className="absolute logo-team-first-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerA.short_name + ".png"}/>
         <img className="absolute logo-team-second-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerB.short_name + ".png"}/>
         <div className="layer-radar"></div>
-        <Radar options={{ tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
+        <Radar options={{ maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
       </div>
     );
   }
