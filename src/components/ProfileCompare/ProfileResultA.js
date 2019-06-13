@@ -54,15 +54,15 @@ class ProfileResultA extends Component {
         return 'Ailier fort';
       case 'C':
         return 'Pivot';
-  
+
     }
   }
   render() {
     var PlayerInfos = this.props.updateItemA;
     var PlayerInfosMore = this.props.updateItemMoreA;
     console.log(PlayerInfosMore);
-    
-    
+
+
 
     var totalrb = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound
     var roPrc = PlayerInfosMore.offensive_rebound / totalrb * 100;
@@ -89,7 +89,7 @@ class ProfileResultA extends Component {
 
     if (PlayerInfos !== undefined) {
       return (
-        
+
         <div className="container">
           {this.props.renderSearch}
           <section style = {{ backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat"}} className="all-content">
@@ -134,7 +134,7 @@ class ProfileResultA extends Component {
                     <p>{PlayerInfosMore.match_played} </p>
                   <p>Matchs Joués</p>
                   </div>
-                  
+
                 </div>
 
                 <div className="Stats-item-container">
@@ -148,10 +148,10 @@ class ProfileResultA extends Component {
                   <p>{PlayerInfosMore.defensive_rebound}</p>
                     <p>Rebond Defensive</p>
                   </div>
-                  
+
                 </div>
 
-                
+
 
                 <div style={styles} className="Stats-item-container">
                   <DonutChart
@@ -164,7 +164,7 @@ class ProfileResultA extends Component {
                         donutTitle.textContent = data[i].value + "%"
                         donutSubTitle.textContent = data[i].name
                         console.log(item);
-                        
+
                       } else {
                         donutTitle.textContent = PlayerInfosMore.two_points + PlayerInfosMore.three_points
                         donutSubTitle.textContent = title

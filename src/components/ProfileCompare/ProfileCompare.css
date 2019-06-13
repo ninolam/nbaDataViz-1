@@ -13,7 +13,7 @@
 	height: 100%;
 }
 .PlayerB .layer {
-	background-color: #e2813aba;
+	background-color: #e2813a;
 }
 .Players-container .mb-10 {
 	color: #fff;
@@ -264,8 +264,10 @@ input::placeholder, input {
 	max-width: 720px;
 	align-items: center;
 	margin-left: 30px;
+  width: 110%;
 }
 .Stats-item-container{
+  margin: auto;
 	display: inline-block;
 	width: auto;
 }
@@ -329,6 +331,7 @@ input::placeholder, input {
 	background-color: var(--color-player-b);
 }
 .all-content{
+  width: 100%;
 	overflow-y: hidden;
 	height: 100%;
 	display: flex;
