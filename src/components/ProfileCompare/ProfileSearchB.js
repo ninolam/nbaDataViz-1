@@ -102,6 +102,7 @@ class ProfileSearchB extends Component {
                     data-category={item.name}>
                       <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')}/>
                       <p>{item.name}</p>
+                      <img className="logo-team-player" src={item.logo}/>
                     </div>);
                   }  
               

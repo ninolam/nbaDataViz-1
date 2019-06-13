@@ -409,3 +409,6 @@ input::placeholder, input {
 .equipe, input{
 	text-transform: capitalize;
 }
+.logo-team-player{
+	margin-left: auto!important;
+}
