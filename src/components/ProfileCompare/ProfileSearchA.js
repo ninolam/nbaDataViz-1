@@ -95,7 +95,7 @@ class ProfileSearchA extends Component {
         <div className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
           
           {
-            this.state.items.map((item, i) => {
+            this.state.items.map((item) => {
                   if (this.state.error === false) {
                     return (<div className="list-group-item" 
                           onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
@@ -105,6 +105,7 @@ class ProfileSearchA extends Component {
                           data-category={item.name}>
                             <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')}/>
                             <p>{item.name}</p>
+                            <img className="logo-team-player" src={item.logo}/>
                           </div>);
                   }  
               

@@ -116,8 +116,8 @@ export default class RadarChart extends Component {
             <button onClick={this.handleAtt} className="radar-chart-category-att active">Attaque</button>
             <button onClick={this.handleDef} className="radar-chart-category-def">Defense</button>
           </div>
-          <img className="absolute logo-team-first-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerA.short_name + ".png"}/>
-          <img className="absolute logo-team-second-player" src={"http://18.184.166.182:8081/images/nba_image/" + this.state.playerB.short_name + ".png"}/>
+          <img className="absolute logo-team-first-player" src={this.state.playerA.logo}/>
+          <img className="absolute logo-team-second-player" src={this.state.playerA.logo}/>
           <div className="layer-radar"></div>
           <Radar options={{ maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
         </div>
