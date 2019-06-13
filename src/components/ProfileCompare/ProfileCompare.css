@@ -116,7 +116,7 @@ select option {
 	font-family: 'Montserrat', sans-serif;
 }
 .container .Search-container select{
-	background: url('../../assets/imgs/arrow-white.png') 92% / 12px no-repeat #ffffff;
+	background: url('../../assets/imgs/arrow-white.png') 86% / 12px no-repeat #ffffff;
 }
 .resizer {
 	position: absolute;
@@ -162,18 +162,26 @@ input::placeholder, input {
 .container ::-webkit-input-placeholder {
 	/* Chrome/Opera/Safari */
 	color: white;
+  font-weight: 600;
 }
 .container ::-moz-placeholder {
 	/* Firefox 19+ */
 	color: white;
+  font-weight: 600;
 }
 .container :-ms-input-placeholder {
 	/* IE 10+ */
 	color: white;
+  font-weight: 600;
 }
 .container :-moz-placeholder{
 	/* Firefox 18- */
 	color: white;
+  font-weight: 600!important;
+}
+.container input, .container select{
+  font-weight: 800;
+  font-size: 16px;
 }
 .Player-container ::-webkit-input-placeholder {
 	/* Chrome/Opera/Safari */

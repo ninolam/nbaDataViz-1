@@ -27,14 +27,14 @@ export default class RadarChart extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleDef = this.handleDef.bind(this);
     this.handleAtt = this.handleAtt.bind(this);
-    
+
 
   }
 
   componentDidUpdate(){
     var parentA = document.querySelector('.PlayerA');
     var parentB = document.querySelector('.PlayerB');
-    var radar = document.querySelector('.radar-chart-container');    
+    var radar = document.querySelector('.radar-chart-container');
     if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
       radar.style.display = "block";
     }
@@ -46,7 +46,7 @@ export default class RadarChart extends Component {
     window.addEventListener('click', this.handleClick);
   }
 
-  handleClick(){    
+  handleClick(){
     setTimeout(() => {
       console.log(window.ProfileSearchA.state.updateItemMoreA);
       console.log(window.ProfileSearchB.state.updateItemMoreB);
@@ -63,13 +63,13 @@ export default class RadarChart extends Component {
       if ( this.state.data.labels[0] === '% de lancers francs')
        {
         newState.data.datasets[0].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
-        newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];    
+        newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];
       }
       console.log(newState.data.datasets);
-      
+
       this.setState({newState});
     }, 300);
-    
+
   }
 
   handleAtt(e){
@@ -79,7 +79,7 @@ export default class RadarChart extends Component {
     var playerB = window.ProfileSearchB.state.updateItemMoreB
     newState.data.labels = [ '% de lancers francs', '% de reussite', '% de 2 points', '% de 3 points'];
     newState.data.datasets[0].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
-    newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];    
+    newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];
     this.setState(newState);
     var buttonA = document.querySelector('.radar-chart-category-att')
     var buttonD = document.querySelector('.radar-chart-category-def')
@@ -91,7 +91,7 @@ export default class RadarChart extends Component {
 
   handleDef(e){
     e.stopPropagation()
-    
+
     let newState = Object.assign({}, this.state);
     var playerA = window.ProfileSearchA.state.updateItemMoreA
     var playerB = window.ProfileSearchB.state.updateItemMoreB
@@ -105,12 +105,12 @@ export default class RadarChart extends Component {
 
     if (buttonD.className.split(" ")[1] !== "active") {
       buttonD.classList.toggle('active')
-      buttonA.classList.toggle('active')  
-      
+      buttonA.classList.toggle('active')
+
     }
   }
-  render() {      
-    
+  render() {
+
     return (
       <section className="radar-chart-container">
         <div className="radar-chart">
@@ -119,7 +119,7 @@ export default class RadarChart extends Component {
             <button onClick={this.handleDef} className="radar-chart-category-def">Defense</button>
           </div>
           <img className="absolute logo-team-first-player" src={this.state.playerA.logo}/>
-          <img className="absolute logo-team-second-player" src={this.state.playerA.logo}/>
+          <img className="absolute logo-team-second-player" src={this.state.playerB.logo}/>
           <div className="layer-radar"></div>
           <Radar options={{ maintainAspectRatio: false, tooltips: {bodyFontFamily: "'Montserrat', sans-serif", titleFontFamily: "'Montserrat', sans-serif",callbacks: { label: function(tooltipItem, data) { return data.datasets[tooltipItem.datasetIndex].label + ' : ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';}}}, legend: false }} data={this.state.data} />
         </div>
