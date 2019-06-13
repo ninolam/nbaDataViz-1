@@ -65,6 +65,8 @@ export default class RadarChart extends Component {
         newState.data.datasets[0].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
         newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];    
       }
+      console.log(newState.data.datasets);
+      
       this.setState({newState});
     }, 300);
     

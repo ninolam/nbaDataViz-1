@@ -26,6 +26,10 @@
 .radar-chart{
   height: 650px;
 }
+.line-chart{
+  height: 100px;
+
+}
 .radar-chart, .chartjs-render-monitor{
   position: relative;
   z-index: 5;
