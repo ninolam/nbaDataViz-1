@@ -16,10 +16,14 @@ export default class RadarChart extends Component {
       labels: [ '% de réussite aux lancers francs', '% de réussite global', '% de réussite aux paniers à 2 points', '% de réussite aux paniers à 3 points'],
       datasets: [
         {
-          backgroundColor: 'rgba(45, 49, 66, 0.7)'
+          backgroundColor: 'rgba(45, 49, 66, 0.7)',
+          pointRadius: 3,
+          pointHoverRadius: 6,
         },
         {
-          backgroundColor: 'rgba(219, 126, 82, 0.7)'
+          backgroundColor: 'rgba(219, 126, 82, 0.7)',
+          pointRadius: 3,
+          pointHoverRadius: 6,
         }
       ],
     }

@@ -15,6 +15,7 @@ import { defaults } from 'react-chartjs-2'
 defaults.global.defaultFontSize = 12;
 defaults.global.defaultFontColor = '#000000';
 defaults.global.defaultFontFamily = 'Montserrat';
+defaults.global.defaultFontStyle = 'bold';
 
 export default class LineChart extends Component {
   constructor() {
@@ -27,15 +28,17 @@ export default class LineChart extends Component {
             fill: true,
             lineTension: 0.6,
             backgroundColor: '#2d314285',
-            pointRadius: 4,
+            pointRadius: 3,
             pointHoverRadius: 6,
+            pointBorderColor: "#3E435C",
           },
           {
             fill: true,
             lineTension: 0.6,
             backgroundColor: '#db7e5273',
-            pointRadius: 4,
+            pointRadius: 3,
             pointHoverRadius: 6,
+            pointBorderColor: "#FA8D3E",
           }
         ]
       }
