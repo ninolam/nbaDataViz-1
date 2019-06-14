@@ -16,12 +16,12 @@ export default class RadarChart extends Component {
       labels: [ '% de réussite aux lancers francs', '% de réussite global', '% de réussite aux paniers à 2 points', '% de réussite aux paniers à 3 points'],
       datasets: [
         {
-          backgroundColor: 'rgba(45, 49, 66, 0.7)',
+          backgroundColor: 'rgba(219, 126, 82, 0.7)',
           pointRadius: 3,
           pointHoverRadius: 6,
         },
         {
-          backgroundColor: 'rgba(219, 126, 82, 0.7)',
+          backgroundColor: 'rgba(45, 49, 66, 0.7)',
           pointRadius: 3,
           pointHoverRadius: 6,
         }
@@ -59,15 +59,15 @@ export default class RadarChart extends Component {
         playerA:playerA,
         playerB:playerB
       });
-      newState.data.datasets[0].label = playerA.player_name;
-      newState.data.datasets[1].label = playerB.player_name;
+      newState.data.datasets[0].label = playerB.player_name;
+      newState.data.datasets[1].label = playerA.player_name;
       if ( this.state.data.labels[0] === '% de réussite aux lancers francs')
        {
-        newState.data.datasets[0].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
-        newState.data.datasets[1].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];
+        newState.data.datasets[0].data = [playerB.free_throw_percent / 10, playerB.field_goal_pourcent / 10, playerB.two_point_percent / 10, playerB.three_points_percent / 10];
+        newState.data.datasets[1].data = [playerA.free_throw_percent / 10, playerA.field_goal_pourcent / 10, playerA.two_point_percent / 10, playerA.three_points_percent / 10];
       } else {
-        newState.data.datasets[0].data = [playerA.defensive_rebound_percent, (playerA.personal_fault / playerA.match_played), playerA.steal_percent, playerA.block_percent];
-        newState.data.datasets[1].data = [playerB.defensive_rebound_percent, (playerB.personal_fault / playerB.match_played), playerB.steal_percent, playerB.block_percent];    
+        newState.data.datasets[0].data = [playerB.defensive_rebound_percent, (playerB.personal_fault / playerB.match_played), playerB.steal_percent, playerB.block_percent];
+        newState.data.datasets[1].data = [playerA.defensive_rebound_percent, (playerA.personal_fault / playerA.match_played), playerA.steal_percent, playerA.block_percent];
       }
       this.setState({newState});
     }, 300);
@@ -95,7 +95,7 @@ export default class RadarChart extends Component {
 
 
   render() {
-    
+
     return (
       <section className="radar-chart-container">
         <div className="radar-chart">

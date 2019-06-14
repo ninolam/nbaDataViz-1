@@ -1,18 +1,18 @@
 
 .absolute{
   position: absolute;
-  width: 300px;
+  width: 500px;
   top: 60%;
   transform: translateY(-50%);
 }
 .logo-team-first-player{
-  left: 50px
+  left: -50px
 }
 .logo-team-second-player{
-  right: 50px
+  right: -50px
 }
 .layer-radar{
-  background-color: #f2efe5eb;
+  background-color: #f2efe5f7;
   position: absolute;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@
 .radar-chart-container{
   height: 85vh;
   width: 100%;
-  padding-bottom: 50px;
+  padding-top: 30px;
 }
 .radar-chart{
   height: 650px;
@@ -42,7 +42,7 @@
   .radar-chart-category{
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 10px 0px 60px 0px;
     width: 30%;
     margin: 20px auto;
   }
