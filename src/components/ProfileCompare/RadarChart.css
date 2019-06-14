@@ -20,7 +20,7 @@
   height: 100%;
 }
 .radar-chart-container{
-  min-height: 100vh;
+  height: 85vh;
   width: 100%;
 }
 .radar-chart{
