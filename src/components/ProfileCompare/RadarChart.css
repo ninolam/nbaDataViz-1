@@ -20,8 +20,9 @@
   height: 100%;
 }
 .radar-chart-container{
-  min-height: 100vh;
+  height: 85vh;
   width: 100%;
+  padding-bottom: 50px;
 }
 .radar-chart{
   height: 650px;
@@ -33,7 +34,6 @@
 .radar-chart, .radar-chart .chartjs-render-monitor{
   position: relative;
   z-index: 5;
-  margin-bottom: 70px;
 }
   .radar-chart, .radar-chart-category, section{
     background-color: #F2EFE5;
