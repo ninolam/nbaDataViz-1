@@ -34,12 +34,12 @@ export default class RadarChart extends Component {
   componentDidUpdate(){
     var parentA = document.querySelector('.PlayerA');
     var parentB = document.querySelector('.PlayerB');
-    var radar = document.querySelector('.radar-chart-container');
+    var dataViz = document.querySelector('.data-viz-container');
     if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
-      radar.style.display = "block";
+      dataViz.style.display = "block";
     }
     else {
-      radar.style.display = "none"
+      dataViz.style.display = "none"
     }
   }
   componentDidMount(){
