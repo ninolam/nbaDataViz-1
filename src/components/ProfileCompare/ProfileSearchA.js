@@ -101,7 +101,9 @@ class ProfileSearchA extends Component {
                           onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
                           var dataMore = await api.getCategoriesStats(item.id_player_stat);    
                           this.setState({updateItemMoreA: dataMore, updateItemA: Players[0], ProfileResult: true, writing: false });
-                          var inputValue = document.querySelector('.PlayerA .Search-all-container input'); inputValue.value = Players[0].name }}
+                          this.searchInput.current.value = Players[0].name;
+                        }}
+                          lo
                           data-category={item.name}>
                             <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')}/>
                             <p>{item.name}</p>

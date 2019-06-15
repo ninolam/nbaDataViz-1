@@ -54,15 +54,15 @@ class ProfileResultA extends Component {
         return 'Ailier fort';
       case 'C':
         return 'Pivot';
-  
+
     }
   }
   render() {
     var PlayerInfos = this.props.updateItemA;
     var PlayerInfosMore = this.props.updateItemMoreA;
     console.log(PlayerInfosMore);
-    
-    
+
+
 
     var totalrb = PlayerInfosMore.offensive_rebound + PlayerInfosMore.defensive_rebound
     var roPrc = PlayerInfosMore.offensive_rebound / totalrb * 100;
@@ -89,10 +89,11 @@ class ProfileResultA extends Component {
 
     if (PlayerInfos !== undefined) {
       return (
-        
+
         <div className="container">
           {this.props.renderSearch}
-          <section style = {{  backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat"}} className="all-content">
+
+          <section style = {{ backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat"}} className="all-content">
             <div className="layer"></div>
             <div className="Player-container Player-info-container">
               <img className="img-player" alt="player" src={'https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=' + PlayerInfos.name.replace(' ', '-')} />
@@ -105,19 +106,19 @@ class ProfileResultA extends Component {
                 <div>
                   <p className="poids">Poids: <b>{PlayerInfosMore.weight} kg</b></p>
                   <p className="taille">Taille: <b>{PlayerInfosMore.height / 100} m</b></p>
-                  <p className="universite">Université: <b>{PlayerInfosMore.college === "N/A" ? "Aucune" : PlayerInfosMore.college }</b></p>
+                  <p className="universite">Université: <b>{PlayerInfosMore.college === "N/A" ? "Non renseignée" : PlayerInfosMore.college }</b></p>
                 </div>
                 </div>
-              <div className="Stats-container Stats-container-hidden">
+                <div className="Stats-container Stats-container-hidden">
                 <div className="Stats-item-container">
                   <div className="Stats-item" id="minute">
-                    <p>{PlayerInfosMore.rankMinutePlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.rankMinutePlayed} <sup>{PlayerInfosMore.rankMinutePlayed === 1 ? "er" : "ème"}</sup> / {PlayerInfosMore.totalPlayer}</p>
                     <p>{PlayerInfosMore.minute_played} </p>
                     <p>Minutes jouées</p>
 
                   </div>
                   <div className="Stats-item" id="points">
-                  <p>{PlayerInfosMore.rankPoint} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                  <p>{PlayerInfosMore.rankPoint} <sup>{PlayerInfosMore.rankPoint === 1 ? "er" : "ème"}</sup> / {PlayerInfosMore.totalPlayer}</p>
                   <p>{PlayerInfosMore.points}</p>
                     <p>Points marquées</p>
                   </div>
@@ -125,12 +126,12 @@ class ProfileResultA extends Component {
 
                 <div className="Stats-item-container">
                   <div className="Stats-item" id="passes">
-                    <p>{PlayerInfosMore.rankAssit} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.rankAssit} <sup>{PlayerInfosMore.rankAssit === 1 ? "er" : "ème"}</sup> / {PlayerInfosMore.totalPlayer}</p>
                     <p>{PlayerInfosMore.assist} </p>
                     <p>Passes décisives</p>
                   </div>
                   <div className="Stats-item" id="matchJouer">
-                    <p>{PlayerInfosMore.rankMatchPlayed} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.rankMatchPlayed} <sup>{PlayerInfosMore.rankMatchPlayed === 1 ? "er" : "ème"}</sup> / {PlayerInfosMore.totalPlayer}</p>
                     <p>{PlayerInfosMore.match_played} </p>
                   <p>Matchs Joués</p>
                   </div>
@@ -139,19 +140,19 @@ class ProfileResultA extends Component {
 
                 <div className="Stats-item-container">
                   <div className="Stats-item" id="rebondO">
-                    <p>{PlayerInfosMore.rankOffensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                    <p>{PlayerInfosMore.rankOffensiveRebound} <sup>{PlayerInfosMore.rankOffensiveRebound === 1 ? "er" : "ème"}</sup> / {PlayerInfosMore.totalPlayer}</p>
                     <p>{PlayerInfosMore.offensive_rebound} </p>
                   <p>Rebond Offensive</p>
                   </div>
                   <div className="Stats-item" id="rebondD">
-                  <p>{PlayerInfosMore.rankDefensiveRebound} <sup>e</sup> / {PlayerInfosMore.totalPlayer}</p>
+                  <p>{PlayerInfosMore.rankDefensiveRebound} <sup>{PlayerInfosMore.rankDefensiveRebound === 1 ? "er" : "ème"}</sup> / {PlayerInfosMore.totalPlayer}</p>
                   <p>{PlayerInfosMore.defensive_rebound}</p>
                     <p>Rebond Defensive</p>
                   </div>
-                  
+
                 </div>
 
-                
+
 
                 <div style={styles} className="Stats-item-container">
                   <DonutChart
@@ -164,7 +165,7 @@ class ProfileResultA extends Component {
                         donutTitle.textContent = data[i].value + "%"
                         donutSubTitle.textContent = data[i].name
                         console.log(item);
-                        
+
                       } else {
                         donutTitle.textContent = PlayerInfosMore.two_points + PlayerInfosMore.three_points
                         donutSubTitle.textContent = title

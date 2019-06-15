@@ -1,18 +1,18 @@
 
 .absolute{
   position: absolute;
-  max-width: 50%;
-  top: 50%;
+  width: 300px;
+  top: 60%;
   transform: translateY(-50%);
 }
 .logo-team-first-player{
-  left: -150px
+  left: -50px
 }
 .logo-team-second-player{
-  right: -150px
+  right: -50px
 }
 .layer-radar{
-  background-color: #f2efe5eb;
+  background-color: #f2efe5f7;
   position: absolute;
   top: 0;
   left: 0;
@@ -20,20 +20,18 @@
   height: 100%;
 }
 .radar-chart-container{
-  min-height: 100vh;
+  height: 78vh;
   width: 100%;
 }
 .radar-chart{
-  height: 650px;
+  height: 450px;
 }
 .line-chart{
   height: 100px;
-
 }
-.radar-chart, .chartjs-render-monitor{
+.radar-chart, .radar-chart .chartjs-render-monitor{
   position: relative;
   z-index: 5;
-  padding-bottom: 40px;
 }
   .radar-chart, .radar-chart-category, section{
     background-color: #F2EFE5;
@@ -42,22 +40,27 @@
   .radar-chart-category{
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 10px 0px 20px 0px;
     width: 30%;
     margin: 20px auto;
   }
-  
-  
   .radar-chart-category button{
     font-family: 'Montserrat', sans-serif!important;
     padding: 10px 40px;
-    border: 1px solid black;
+    border: 1px solid var(--color-player-a);
     outline: none;
+    font-weight: 600;
     text-transform: uppercase;
     transition: 0.5s ease-out;
+    cursor: pointer;
   }
-  
+
+  .radar-chart-category button:hover {
+    color:var(--color-player-b);
+    background-color: var(--color-player-a);
+  }
+
   .radar-chart-category .active{
-    color:#ffffff;
-    background-color: #000000;
+    color:var(--color-player-b);
+    background-color: var(--color-player-a);
   }
