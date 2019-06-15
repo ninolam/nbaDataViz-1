@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/playerz/static/css/main.186c0d48.chunk.css",
+    "main.js": "/playerz/static/js/main.39c38e05.chunk.js",
+    "main.js.map": "/playerz/static/js/main.39c38e05.chunk.js.map",
+    "runtime~main.js": "/playerz/static/js/runtime~main.3cb80f0c.js",
+    "runtime~main.js.map": "/playerz/static/js/runtime~main.3cb80f0c.js.map",
+    "static/js/2.6f37e103.chunk.js": "/playerz/static/js/2.6f37e103.chunk.js",
+    "static/js/2.6f37e103.chunk.js.map": "/playerz/static/js/2.6f37e103.chunk.js.map",
+    "index.html": "/playerz/index.html",
+    "precache-manifest.ce38bb48231159e7fb9bcc5aac2de5c7.js": "/playerz/precache-manifest.ce38bb48231159e7fb9bcc5aac2de5c7.js",
+    "service-worker.js": "/playerz/service-worker.js",
+    "static/css/main.186c0d48.chunk.css.map": "/playerz/static/css/main.186c0d48.chunk.css.map",
+    "static/media/Home.css": "/playerz/static/media/BG.4b3f2a55.jpg",
+    "static/media/logo.svg": "/playerz/static/media/logo.e27aa075.svg",
+    "static/media/onvalappeler.svg": "/playerz/static/media/onvalappeler.96a0578e.svg"
+  }
+}
