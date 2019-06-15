@@ -155,13 +155,12 @@ class ProfileResultA extends Component {
                   <DonutChart
                     size={200}
                     data={data}
-                    onHover={(i, item) => {
+                    onHover={(i) => {
                       var donutTitle = document.querySelector('.PlayerB .donut-chart:first-child .donut-chart-text-value')
                       var donutSubTitle = document.querySelector('.PlayerB .donut-chart:first-child .donut-chart-text-subtext')
                       if (i >= 0) {
                         donutTitle.textContent = data[i].value + "%"
                         donutSubTitle.textContent = data[i].name
-                        console.log(item);
                         
                       } else {
                         donutTitle.textContent = PlayerInfosMore.two_points + PlayerInfosMore.three_points

@@ -92,6 +92,7 @@ class ProfileResultA extends Component {
 
         <div className="container">
           {this.props.renderSearch}
+
           <section style = {{ backgroundColor: "#2D3142",backgroundImage: "url("+PlayerInfosMore.logo+")",backgroundPosition: "center",backgroundRepeat: "no-repeat"}} className="all-content">
             <div className="layer"></div>
             <div className="Player-container Player-info-container">

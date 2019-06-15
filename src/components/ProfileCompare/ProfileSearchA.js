@@ -102,7 +102,6 @@ class ProfileSearchA extends Component {
                           var dataMore = await api.getCategoriesStats(item.id_player_stat);    
                           this.setState({updateItemMoreA: dataMore, updateItemA: Players[0], ProfileResult: true, writing: false });
                           this.searchInput.current.value = Players[0].name;
-                          console.log(dataMore);
                         }}
                           lo
                           data-category={item.name}>

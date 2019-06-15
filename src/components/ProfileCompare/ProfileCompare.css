@@ -252,14 +252,13 @@ input::placeholder, input {
 	height: 95%;
 }
 .Player-info{
-	line-height: 1.7;
+	line-height: 1.5;
 	display: flex;
 	justify-content: space-around;
 	width: 110%;
 }
 .Stats-container{
 	display: flex;
-	/*overflow-x: hidden;*/
 	white-space: nowrap;
 	justify-content: center;
 	max-width: 720px;
@@ -332,10 +331,11 @@ input::placeholder, input {
 	background-color: var(--color-player-b);
 }
 .all-content{
-  width: 100%;
+  	width: 100%;
 	overflow-y: hidden;
 	height: 100%;
 	display: flex;
+	align-items: flex-end;
 }
 .up{
 	transform: translateY(-150%);

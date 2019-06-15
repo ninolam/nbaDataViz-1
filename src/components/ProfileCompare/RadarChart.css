@@ -1,7 +1,7 @@
 
 .absolute{
   position: absolute;
-  width: 500px;
+  width: 300px;
   top: 60%;
   transform: translateY(-50%);
 }
@@ -20,16 +20,14 @@
   height: 100%;
 }
 .radar-chart-container{
-  height: 85vh;
+  height: 78vh;
   width: 100%;
-  padding-top: 30px;
 }
 .radar-chart{
-  height: 650px;
+  height: 450px;
 }
 .line-chart{
   height: 100px;
-
 }
 .radar-chart, .radar-chart .chartjs-render-monitor{
   position: relative;
@@ -42,11 +40,10 @@
   .radar-chart-category{
     display: flex;
     justify-content: space-between;
-    padding: 10px 0px 60px 0px;
+    padding: 10px 0px 20px 0px;
     width: 30%;
     margin: 20px auto;
   }
-
   .radar-chart-category button{
     font-family: 'Montserrat', sans-serif!important;
     padding: 10px 40px;
