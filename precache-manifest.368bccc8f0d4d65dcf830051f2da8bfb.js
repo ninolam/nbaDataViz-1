@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "98e1e37f09af78e2214285f9637a150a",
+    "revision": "25eefa365d6919b1829b9d492b64dff0",
     "url": "/playerz.github.io/index.html"
   },
   {
