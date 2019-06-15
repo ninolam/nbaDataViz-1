@@ -65,8 +65,8 @@ export default class LineChart extends Component {
       if (parentA.childNodes[0].className === 'container' && parentB.childNodes[0].className === 'container') {
         newState.data.datasets[0].data = [];
         newState.data.datasets[1].data = [];
-        playerB.pointCarrier.map(item => newState.data.datasets[0].data.push(Math.round((item.points / playerB.match_played))))
-        playerA.pointCarrier.map(item => newState.data.datasets[1].data.push(Math.round((item.points / playerA.match_played))))        
+        playerB.pointCarrier.map(item => newState.data.datasets[0].data.push(item.points))
+        playerA.pointCarrier.map(item => newState.data.datasets[1].data.push(item.points))        
       }
       this.setState({newState});
     }, 300);
