@@ -16,7 +16,7 @@ class ProfileSearchB extends Component {
       opacity: 1,
       items: [],
       error: false,
-      writing : false
+      writing: false
     }
     this.filterList = this.filterList.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
@@ -24,37 +24,45 @@ class ProfileSearchB extends Component {
 
   searchInput = createRef();
 
-  async filterList(event){
-    
+  async filterList(event) {
+
     console.log(event.target.value, this.searchInput.current.value);
-    
+
     if (this.searchInput.current.value !== "") {
-      var data = await api.getCategories(this.searchInput.current.value, this.state.value);      
-        if (data.status === "Not Found") {
-          this.setState({ error: true });
-        } else {
-          this.setState({ items: data, error: false, profileResult: false, writing: true});
-        }
+      var data = await api.getCategories(this.searchInput.current.value, this.state.value);
+      if (data.status === "Not Found") {
+        this.setState({ error: true, writing: false });
+      } else {
+        this.setState({ items: data, error: false, profileResult: false, writing: true });
+      }
     }
     else {
-      this.setState({ writing: false});
+      this.setState({ writing: false });
     }
   }
   onChangeupdateItemB(newItem) {
-    this.setState({ 
+    this.setState({
       updateItemB: newItem,
-      updateItemMoreB: newItem 
-     })
+      updateItemMoreB: newItem
+    })
   }
 
-  onSelectChange(event) {
+  async onSelectChange(event) {
     this.setState({ value: event.target.value });
+    const data = await api.getCategories(this.searchInput.current.value, event.target.value);
+
+    if (data[0] !== undefined) {
+      var dataMore = await api.getCategoriesStats(data[0].id_player_stat);
+
+      this.setState({ updateItemMoreB: dataMore });
+
+    }
   }
 
   render() {
-    
+
     if (this.state.ProfileResult === false) {
-      
+
       return (
         <div className="Player-container">
           <h2 className="Player-title mb-10">
@@ -67,7 +75,7 @@ class ProfileSearchB extends Component {
     }
     else {
       return (
-        <ProfileResultB renderSearch={this.renderSearch()} updateItemMoreB={this.state.updateItemMoreB} updateItemB={this.state.updateItemB} onChangeupdateItemB={this.onChangeupdateItemB.bind(this)} />
+        <ProfileResultB writing={this.state.writing} renderSearch={this.renderSearch()} updateItemMoreB={this.state.updateItemMoreB} updateItemB={this.state.updateItemB} onChangeupdateItemB={this.onChangeupdateItemB.bind(this)} />
       );
     }
   }
@@ -90,23 +98,25 @@ class ProfileSearchB extends Component {
           </select>
         </div>
         <div className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
-          
+
           {
             this.state.items.map((item) => {
-                  if (this.state.error === false) {
-                    return (<div className="list-group-item" 
-                    onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
-                    var dataMore = await api.getCategoriesStats(item.id_player_stat);    
-                    this.setState({updateItemMoreB: dataMore, updateItemB: Players[0], ProfileResult: true, writing: false });
-                    this.searchInput.current.value = Players[0].name;}}
-                    data-category={item.name}>
-                      <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')}/>
-                      <p>{item.name}</p>
-                      <img className="logo-team-player" src={item.logo}/>
-                    </div>);
-                  }  
-              
-            })} 
+              if (this.state.error === false) {
+                return (<div className="list-group-item"
+                  onClick={async (event) => {
+                    const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
+                    var dataMore = await api.getCategoriesStats(item.id_player_stat);
+                    this.setState({ updateItemMoreB: dataMore, updateItemB: Players[0], ProfileResult: true, writing: false });
+                    this.searchInput.current.value = Players[0].name;
+                  }}
+                  data-category={item.name}>
+                  <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')} />
+                  <p>{item.name}</p>
+                  <img className="logo-team-player" src={item.logo} />
+                </div>);
+              }
+
+            })}
         </div>
       </div>
     )

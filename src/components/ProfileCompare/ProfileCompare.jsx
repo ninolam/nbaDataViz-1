@@ -7,23 +7,18 @@ import RadarChart from './RadarChart'
 import LineChart from './LineChart'
 
 
-class ProfileCompare extends Component  {
+class ProfileCompare extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      ProfileResult: false,
       updateItemMoreA: [],
       updateItemMoreB: [],
-     }
+    }
   }
 
-  changeView() {
-    this.setState({ ProfileResult: true });
-  }
-  
   render() {
-    
+
     function changevalue(e) {
       e.preventDefault();
 
@@ -34,14 +29,12 @@ class ProfileCompare extends Component  {
       });
 
       function resizeX(e) {
-        var bodyWidth = 100 / document.body.clientWidth;
         var box1 = document.querySelector('.PlayerA');
         var box2 = document.querySelector('.PlayerB');
         var PlayerContainerA = document.querySelector('.PlayerA .Player-container');
         var PlayerContainerB = document.querySelector('.PlayerB .Player-container');
         var contentA = document.querySelector('.PlayerA .Stats-container');
         var contentB = document.querySelector('.PlayerB .Stats-container');
-        var leftHeight = (parseFloat(window.getComputedStyle(box1, '').width) + e.movementX) * bodyWidth;
         var PlayerContainerPlusA = document.querySelector('.PlayerA .Player-container-plus-hide');
         var PlayerContainerPlusB = document.querySelector('.PlayerB .Player-container-plus-hide');
         var PlayerContainerPlusitemA = document.querySelector('.PlayerA .Stats-item-container-plus');
@@ -51,19 +44,21 @@ class ProfileCompare extends Component  {
         var secondItemB = document.querySelector('.PlayerB .Stats-item-container:nth-child(3)')
         var thirdItemB = document.querySelector('.PlayerB .Stats-item-container:last-child')
         var lastItemB = document.querySelector('.PlayerB .Stats-item-container-plus .Stats-item-container')
-        
+
         var firstItemA = document.querySelector('.PlayerA .Stats-item-container:nth-child(2)')
         var secondItemA = document.querySelector('.PlayerA .Stats-item-container:nth-child(3)')
         var thirdItemA = document.querySelector('.PlayerA .Stats-item-container:last-child')
         var lastItemA = document.querySelector('.PlayerA .Stats-item-container-plus .Stats-item-container')
 
-        box1.style.width = leftHeight + '%';
-        box2.style.width = 100 - leftHeight + '%';
+        var bodyWidth = 100 / document.body.clientWidth;
+        var leftWidth = (parseFloat(window.getComputedStyle(box1, '').width) + e.movementX) * bodyWidth;
+
+        box1.style.width = leftWidth + '%';
+        box2.style.width = 100 - leftWidth + '%';
 
         if (box1.style.width >= "70%" && box1.style.width <= "71%") {
-          box1.style.width = leftHeight + 25 + '%';
+          box1.style.width = leftWidth + 25 + '%';
           box2.children[0].style.visibility = "hidden";
-          console.log(box2.children[0]);
           if (PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container' && box1.style.width > "72%") {
             contentA.classList.remove("Stats-container-hidden");
             PlayerContainerPlusA.style.display = "flex";
@@ -77,7 +72,7 @@ class ProfileCompare extends Component  {
         else if (box1.style.width >= "84%" && box1.style.width <= "85%") {
           box1.style.width = '50%';
           box2.children[0].style.visibility = "visible";
-            if (PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container') {
+          if (PlayerContainerA.children[2].className.split(" ")[0] === 'Stats-container') {
             contentA.classList.add("Stats-container-hidden");
             PlayerContainerPlusA.style.display = "none"
             contentA.appendChild(lastItemA);
@@ -90,7 +85,7 @@ class ProfileCompare extends Component  {
         }
 
         else if (box1.style.width >= "30%" && box1.style.width <= "31%") {
-          box1.style.width = leftHeight - 30 + '%';
+          box1.style.width = leftWidth - 30 + '%';
           box1.children[0].style.visibility = "hidden";
 
           if (PlayerContainerB.children[2].className.split(" ")[0] === 'Stats-container' && box1.style.width < "29%") {
@@ -115,28 +110,28 @@ class ProfileCompare extends Component  {
             document.querySelector('.Players-container .PlayerB .container').classList.remove('container-flex', 'container-flex-reverse')
             firstItemB.style.display = "none"
             secondItemB.style.display = "none"
-            }
+          }
         }
       }
     };
     return (
       <section>
 
-      <div className="Players-container">
-        <div  className="content-box PlayerA left">
-          <ProfileSearchA ref={(ProfileSearchA) => {window.ProfileSearchA = ProfileSearchA}} id={"A"} />
-          <div onMouseDown={changevalue} className="resizer"><span className="helper"></span><img alt="resize" src={resize} /> </div>
-        </div>
+        <div className="Players-container">
+          <div className="content-box PlayerA left">
+            <ProfileSearchA ref={(ProfileSearchA) => { window.ProfileSearchA = ProfileSearchA }} id={"A"} />
+            <div onMouseDown={changevalue} className="resizer"><span className="helper"></span><img alt="resize" src={resize} /> </div>
+          </div>
 
-        <div className="content-box PlayerB right">
-          <ProfileSearchB ref={(ProfileSearchB) => {window.ProfileSearchB = ProfileSearchB}} id={"B"} />
+          <div className="content-box PlayerB right">
+            <ProfileSearchB ref={(ProfileSearchB) => { window.ProfileSearchB = ProfileSearchB }} id={"B"} />
+          </div>
         </div>
-      </div>
-      <section className="data-viz-container">
-        <RadarChart  updateItemA={this.state.updateItemA} updateItemB={this.state.updateItemB} />
-        <LineChart  updateItemA={this.state.updateItemA} updateItemB={this.state.updateItemB} />
+        <section className="data-viz-container">
+          <RadarChart />
+          <LineChart />
+        </section>
       </section>
-    </section>
     );
   }
 }

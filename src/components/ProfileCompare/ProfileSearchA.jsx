@@ -16,7 +16,7 @@ class ProfileSearchA extends Component {
       opacity: 1,
       items: [],
       error: false,
-      writing : false
+      writing: false
     }
     this.filterList = this.filterList.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
@@ -26,38 +26,45 @@ class ProfileSearchA extends Component {
 
 
 
-  async filterList(event){
-    
+  async filterList(event) {
+
     console.log(event.target.value, this.searchInput.current.value);
-    
+
     if (this.searchInput.current.value !== "") {
-      var data = await api.getCategories(this.searchInput.current.value, this.state.value);      
-        if (data.status === "Not Found") {
-          this.setState({ error: true });
-        } else {
-          this.setState({ items: data, error: false, writing: true});
-        }
+      var data = await api.getCategories(this.searchInput.current.value, this.state.value);
+      if (data.status === "Not Found") {
+        this.setState({ error: true, writing: false });
+      }
+      else {
+        this.setState({ items: data, error: false, writing: true });
+      }
     }
     else {
-      this.setState({ writing: false});
+      this.setState({ writing: false });
     }
 
   }
   onChangeupdateItemA(newItem) {
-    this.setState({ 
+    this.setState({
       updateItemA: newItem,
-      updateItemMoreA: newItem 
-     })
+      updateItemMoreA: newItem
+    })
   }
 
-  onSelectChange(event) {
+  async onSelectChange(event) {
     this.setState({ value: event.target.value });
+    const data = await api.getCategories(this.searchInput.current.value, event.target.value);
+
+    if (data[0] !== undefined) {
+      var dataMore = await api.getCategoriesStats(data[0].id_player_stat);
+      this.setState({ updateItemMoreA: dataMore });
+    }
   }
 
   render() {
-    
+
     if (this.state.ProfileResult === false) {
-      
+
       return (
         <div className="Player-container">
           <h2 className="Player-title mb-10">
@@ -70,7 +77,7 @@ class ProfileSearchA extends Component {
     }
     else {
       return (
-        <ProfileResultA ref={(ProfileResultA) => {window.ProfileResultA = ProfileResultA}} renderSearch={this.renderSearch()} updateItemMoreA={this.state.updateItemMoreA} updateItemA={this.state.updateItemA} onChangeupdateItemA={this.onChangeupdateItemA.bind(this)} />
+        <ProfileResultA ref={(ProfileResultA) => { window.ProfileResultA = ProfileResultA }} renderSearch={this.renderSearch()} writing={this.state.writing} updateItemMoreA={this.state.updateItemMoreA} updateItemA={this.state.updateItemA} onChangeupdateItemA={this.onChangeupdateItemA.bind(this)} />
       );
     }
   }
@@ -79,7 +86,7 @@ class ProfileSearchA extends Component {
     return (
       <div className="Search-all-container">
         <div className="Search-container">
-          <input  type="text" placeholder="Recherche ..." onChange={this.filterList} ref={this.searchInput} />
+          <input type="text" placeholder="Recherche ..." onChange={this.filterList} ref={this.searchInput} />
           <select onChange={this.onSelectChange} value={this.state.value}>
             <option value="2018-19">2018-2019</option>
             <option value="2017-18">2017-2018</option>
@@ -93,25 +100,25 @@ class ProfileSearchA extends Component {
           </select>
         </div>
         <div className={this.state.ProfileResult && this.state.writing === false ? "hidden" : "list-group"}>
-          
+
           {
             this.state.items.map((item) => {
-                  if (this.state.error === false) {
-                    return (<div className="list-group-item" 
-                          onClick={async (event) => { const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
-                          var dataMore = await api.getCategoriesStats(item.id_player_stat);    
-                          this.setState({updateItemMoreA: dataMore, updateItemA: Players[0], ProfileResult: true, writing: false });
-                          this.searchInput.current.value = Players[0].name;
-                        }}
-                          lo
-                          data-category={item.name}>
-                            <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')}/>
-                            <p>{item.name}</p>
-                            <img className="logo-team-player" src={item.logo}/>
-                          </div>);
-                  }  
-              
-            })} 
+              if (this.state.error === false) {
+                return (<div className="list-group-item"
+                  onClick={async (event) => {
+                    const Players = this.state.items.filter(player => player.name === event.currentTarget.dataset.category);
+                    var dataMore = await api.getCategoriesStats(item.id_player_stat);
+                    this.setState({ updateItemMoreA: dataMore, updateItemA: Players[0], ProfileResult: true, writing: false });
+                    this.searchInput.current.value = Players[0].name;
+                  }}
+                  data-category={item.name}>
+                  <img src={"https://tsnimages.tsn.ca/ImageProvider/PlayerHeadshot?seoId=" + item.name.replace(' ', '-')} />
+                  <p>{item.name}</p>
+                  <img className="logo-team-player" src={item.logo} />
+                </div>);
+              }
+
+            })}
         </div>
       </div>
     )

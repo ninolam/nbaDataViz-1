@@ -22,7 +22,6 @@ class Home extends Component {
             <p className="mb-70">Grâce à Playerz, plongez vous dans l'univers de la NBA ! <br/> Parcourez et comparer les statistiques de vos joueurs préférés de ces 10 dernières années !</p>
             <div className="Home-choice">
               <p onClick={this.handleClick.bind(this)} className="Home-choice-compare">COMPARER DEUX JOUEURS</p>
-              {/* <p className="Home-choice-analyse">ANALYSER UN JOUEUR</p> */}
             </div>
           </div>
         </div>

@@ -95,17 +95,13 @@ select option {
 .Search-container input{
   margin-bottom: 4px;
 	padding-left: 15px;
-	width: 75%;
+	width: 70%;
 	height: 42px;
-	-webkit-clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
-	clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
 }
 .Search-container select{
 	width: 25%;
 	padding-right: 10px;
 	height: 42px;
-	-webkit-clip-path: polygon(9% 0%, 100% 0, 100% 100%, 0% 100%);
-	clip-path: polygon(9% 0%, 100% 0, 100% 100%, 0% 100%);
 	border-radius: 0;
 	-webkit-appearance: none;
 	text-align-last: center;
@@ -207,7 +203,7 @@ input::placeholder, input {
 	overflow: auto;
 }
 .container .list-group{
-	max-height: 105px;
+	max-height: 220px;
 }
 .list-group-item {
 	color: black;
@@ -319,14 +315,6 @@ input::placeholder, input {
 .Player-container .Search-all-container {
 	padding-top: 30px;
 }
-.PlayerA .Stats-item-plus{
-	-webkit-clip-path: polygon(0 0, 100% 0, 98% 100%, 0% 100%);
-	clip-path: polygon(0 0, 100% 0, 98% 100%, 0% 100%);
-}
-.PlayerB .Stats-item-plus{
-	-webkit-clip-path: polygon(10px 0, 100% 0, 100% 100%, 0% 100%);
-	clip-path: polygon(10px 0, 100% 0, 100% 100%, 0% 100%);
-}
 .PlayerB .all-content{
 	background-color: var(--color-player-b);
 }
@@ -337,19 +325,8 @@ input::placeholder, input {
 	display: flex;
 	align-items: flex-end;
 }
-.up{
-	transform: translateY(-150%);
-}
 .all-content .Player-container-plus{
 	transition: 1s ease-in;
-}
-.Stats-item-plus{
-	width: 100%;
-	height: 65px;
-	margin-bottom: 20px;
-}
-.PlayerB .Player-container-plus-hide .Stats-item-container-plus{
-	margin-left: 20px;
 }
 .text-up{
 	position: absolute;
@@ -365,12 +342,6 @@ input::placeholder, input {
 }
 .Player-container-plus-hide{
 	display: none;
-	position: relative;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: flex-end;
-	width: 40%;
-	margin: 0 auto;
 }
 .PlayerB .Player-container-plus-hide{
 	align-items: flex-start;
@@ -423,4 +394,8 @@ input::placeholder, input {
 }
 .logo-team-player{
 	margin-left: auto!important;
+}
+
+.filter{
+	filter: brightness(0.2);
 }
